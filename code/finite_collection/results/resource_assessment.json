@@ -1,0 +1,876 @@
+{
+  "halo_corrected": [
+    {
+      "mass_meV": 0.5,
+      "geometry": "same_active_volume",
+      "pickups": 1,
+      "nx": 1,
+      "ny": 1,
+      "uniform_profile": false,
+      "R": 4.183255899135239,
+      "R_count": 3.964085071302923,
+      "chi_radiative": 0.9960201446381455,
+      "chi_peak": 0.9975456078923167,
+      "chi_FWHM_edges": [
+        0.9980705127814693,
+        0.997747665171393
+      ],
+      "R_halo": 4.170471473375028,
+      "R_count_halo": 3.951970452325942
+    },
+    {
+      "mass_meV": 0.5,
+      "geometry": "same_active_volume",
+      "pickups": 4,
+      "nx": 1,
+      "ny": 4,
+      "uniform_profile": false,
+      "R": 0.5458238352206319,
+      "R_count": 0.5304419978932856,
+      "chi_radiative": 0.9960201446381455,
+      "chi_peak": 0.9948221325658909,
+      "chi_FWHM_edges": [
+        0.9944261095033181,
+        0.9944071816535648
+      ],
+      "R_halo": 0.5471392407657157,
+      "R_count_halo": 0.531720334052959
+    },
+    {
+      "mass_meV": 0.5,
+      "geometry": "same_active_volume",
+      "pickups": 16,
+      "nx": 2,
+      "ny": 8,
+      "uniform_profile": false,
+      "R": 0.4556030957177314,
+      "R_count": 0.45239949910689337,
+      "chi_radiative": 0.9960201446381455,
+      "chi_peak": 0.9946193444609758,
+      "chi_FWHM_edges": [
+        0.9944240386690428,
+        0.9950782459345555
+      ],
+      "R_halo": 0.45688732233266327,
+      "R_count_halo": 0.4536746956163018
+    },
+    {
+      "mass_meV": 0.5,
+      "geometry": "same_active_volume",
+      "pickups": 64,
+      "nx": 2,
+      "ny": 32,
+      "uniform_profile": false,
+      "R": 0.41386438918853596,
+      "R_count": 0.40803125523111367,
+      "chi_radiative": 0.9960201446381455,
+      "chi_peak": 0.9944228260998835,
+      "chi_FWHM_edges": [
+        0.994381387687436,
+        0.9944784224168476
+      ],
+      "R_halo": 0.4151950187300311,
+      "R_count_halo": 0.409343130464275
+    },
+    {
+      "mass_meV": 0.5,
+      "geometry": "same_active_volume",
+      "pickups": 1,
+      "nx": 1,
+      "ny": 1,
+      "uniform_profile": true,
+      "R": 0.42438770398403775,
+      "R_count": 0.41758540176541653,
+      "chi_radiative": 0.9960201446381455,
+      "chi_peak": 0.9944349913565351,
+      "chi_FWHM_edges": [
+        0.9943917004275571,
+        0.9944937475023146
+      ],
+      "R_halo": 0.42574175072027226,
+      "R_count_halo": 0.41891774515107905
+    },
+    {
+      "mass_meV": 0.5,
+      "geometry": "30mm_available_depth",
+      "pickups": 1,
+      "nx": 1,
+      "ny": 1,
+      "uniform_profile": false,
+      "R": 0.4943050112504961,
+      "R_count": 0.4758672421517705,
+      "chi_radiative": 0.9960201446381455,
+      "chi_peak": 0.997423520488659,
+      "chi_FWHM_edges": [
+        0.9979451112541136,
+        0.9978557531176251
+      ],
+      "R_halo": 0.49291501455186526,
+      "R_count_halo": 0.47452909287041045
+    },
+    {
+      "mass_meV": 0.5,
+      "geometry": "30mm_available_depth",
+      "pickups": 4,
+      "nx": 1,
+      "ny": 4,
+      "uniform_profile": false,
+      "R": 0.06019928591449283,
+      "R_count": 0.05974526129527485,
+      "chi_radiative": 0.9960201446381455,
+      "chi_peak": 0.9949580759043865,
+      "chi_FWHM_edges": [
+        0.9944658533980342,
+        0.9943231562867282
+      ],
+      "R_halo": 0.0603278740531513,
+      "R_count_halo": 0.05987287961876353
+    },
+    {
+      "mass_meV": 0.5,
+      "geometry": "30mm_available_depth",
+      "pickups": 16,
+      "nx": 2,
+      "ny": 8,
+      "uniform_profile": false,
+      "R": 0.04329709027355833,
+      "R_count": 0.042948888072739645,
+      "chi_radiative": 0.9960201446381455,
+      "chi_peak": 0.9946244760228424,
+      "chi_FWHM_edges": [
+        0.9943711055591155,
+        0.9951827092954645
+      ],
+      "R_halo": 0.04341868548541129,
+      "R_count_halo": 0.04306950539623779
+    },
+    {
+      "mass_meV": 0.5,
+      "geometry": "30mm_available_depth",
+      "pickups": 64,
+      "nx": 4,
+      "ny": 16,
+      "uniform_profile": false,
+      "R": 0.03602874340864847,
+      "R_count": 0.03541307727036849,
+      "chi_radiative": 0.9960201446381455,
+      "chi_peak": 0.9943107240059427,
+      "chi_FWHM_edges": [
+        0.9942516536082627,
+        0.9943946076809295
+      ],
+      "R_halo": 0.03615273124701873,
+      "R_count_halo": 0.03553494638056727
+    },
+    {
+      "mass_meV": 0.5,
+      "geometry": "30mm_available_depth",
+      "pickups": 1,
+      "nx": 1,
+      "ny": 1,
+      "uniform_profile": true,
+      "R": 0.03534121416938165,
+      "R_count": 0.034717233206930306,
+      "chi_radiative": 0.9960201446381455,
+      "chi_peak": 0.9943225830469309,
+      "chi_FWHM_edges": [
+        0.994282276468767,
+        0.9943760719110354
+      ],
+      "R_halo": 0.03546199006484778,
+      "R_count_halo": 0.03483587669519807
+    },
+    {
+      "mass_meV": 1.0,
+      "geometry": "same_active_volume",
+      "pickups": 1,
+      "nx": 1,
+      "ny": 1,
+      "uniform_profile": false,
+      "R": 32.25676201200232,
+      "R_count": 30.799307950155423,
+      "chi_radiative": 0.9827790743016713,
+      "chi_peak": 0.9938211555142422,
+      "chi_FWHM_edges": [
+        0.9939842912107894,
+        0.9944419657463005
+      ],
+      "R_halo": 31.543951535956076,
+      "R_count_halo": 30.11870431877803
+    },
+    {
+      "mass_meV": 1.0,
+      "geometry": "same_active_volume",
+      "pickups": 4,
+      "nx": 1,
+      "ny": 4,
+      "uniform_profile": false,
+      "R": 1.9122637482775766,
+      "R_count": 1.8174048871362172,
+      "chi_radiative": 0.9827790743016713,
+      "chi_peak": 0.9769031342006994,
+      "chi_FWHM_edges": [
+        0.9770263280143812,
+        0.973373157419122
+      ],
+      "R_halo": 1.935336946430664,
+      "R_count_halo": 1.8393335270129358
+    },
+    {
+      "mass_meV": 1.0,
+      "geometry": "same_active_volume",
+      "pickups": 16,
+      "nx": 1,
+      "ny": 16,
+      "uniform_profile": false,
+      "R": 0.49021793045676704,
+      "R_count": 0.4901680720937891,
+      "chi_radiative": 0.9827790743016713,
+      "chi_peak": 0.9780948531049268,
+      "chi_FWHM_edges": [
+        0.977168445902883,
+        0.9766727089298175
+      ],
+      "R_halo": 0.4949246065521789,
+      "R_count_halo": 0.4948742694895235
+    },
+    {
+      "mass_meV": 1.0,
+      "geometry": "same_active_volume",
+      "pickups": 64,
+      "nx": 2,
+      "ny": 32,
+      "uniform_profile": false,
+      "R": 0.45942083060741695,
+      "R_count": 0.4531470381560558,
+      "chi_radiative": 0.9827790743016713,
+      "chi_peak": 0.9771205305881028,
+      "chi_FWHM_edges": [
+        0.9769220466732111,
+        0.9774863129505886
+      ],
+      "R_halo": 0.4647572862802733,
+      "R_count_halo": 0.4584106198687281
+    },
+    {
+      "mass_meV": 1.0,
+      "geometry": "same_active_volume",
+      "pickups": 1,
+      "nx": 1,
+      "ny": 1,
+      "uniform_profile": true,
+      "R": 0.45660478021168527,
+      "R_count": 0.4498743086357487,
+      "chi_radiative": 0.9827790743016713,
+      "chi_peak": 0.9770022858494416,
+      "chi_FWHM_edges": [
+        0.9769003732662711,
+        0.977155011665769
+      ],
+      "R_halo": 0.4620203403224983,
+      "R_count_halo": 0.4552100420014788
+    },
+    {
+      "mass_meV": 1.0,
+      "geometry": "30mm_available_depth",
+      "pickups": 1,
+      "nx": 1,
+      "ny": 1,
+      "uniform_profile": false,
+      "R": 2.105014682373344,
+      "R_count": 1.9748832152532663,
+      "chi_radiative": 0.9827790743016713,
+      "chi_peak": 0.9937500276426237,
+      "chi_FWHM_edges": [
+        0.9937725974740796,
+        0.9943005468740278
+      ],
+      "R_halo": 2.058792717511767,
+      "R_count_halo": 1.9315186803901478
+    },
+    {
+      "mass_meV": 1.0,
+      "geometry": "30mm_available_depth",
+      "pickups": 4,
+      "nx": 1,
+      "ny": 4,
+      "uniform_profile": false,
+      "R": 0.12082197614465102,
+      "R_count": 0.11325280848707454,
+      "chi_radiative": 0.9827790743016713,
+      "chi_peak": 0.9764114145570385,
+      "chi_FWHM_edges": [
+        0.9769259231499164,
+        0.9727301253611695
+      ],
+      "R_halo": 0.1224029939163375,
+      "R_count_halo": 0.11473477980243443
+    },
+    {
+      "mass_meV": 1.0,
+      "geometry": "30mm_available_depth",
+      "pickups": 16,
+      "nx": 2,
+      "ny": 8,
+      "uniform_profile": false,
+      "R": 0.017299358035470093,
+      "R_count": 0.017260981785920133,
+      "chi_radiative": 0.9827790743016713,
+      "chi_peak": 0.9772071144150486,
+      "chi_FWHM_edges": [
+        0.9765116115487364,
+        0.9756706257794051
+      ],
+      "R_halo": 0.017497199691733502,
+      "R_count_halo": 0.01745838455764479
+    },
+    {
+      "mass_meV": 1.0,
+      "geometry": "30mm_available_depth",
+      "pickups": 64,
+      "nx": 4,
+      "ny": 16,
+      "uniform_profile": false,
+      "R": 0.007693159776136712,
+      "R_count": 0.007717052140024128,
+      "chi_radiative": 0.9827790743016713,
+      "chi_peak": 0.9773193827826031,
+      "chi_FWHM_edges": [
+        0.9765746491452004,
+        0.9765066437347133
+      ],
+      "R_halo": 0.007779353912004826,
+      "R_count_halo": 0.00780351396585567
+    },
+    {
+      "mass_meV": 1.0,
+      "geometry": "30mm_available_depth",
+      "pickups": 1,
+      "nx": 1,
+      "ny": 1,
+      "uniform_profile": true,
+      "R": 0.006436927009313358,
+      "R_count": 0.006328328185673556,
+      "chi_radiative": 0.9827790743016713,
+      "chi_peak": 0.9765464018148501,
+      "chi_FWHM_edges": [
+        0.9764448671495651,
+        0.9766967430563207
+      ],
+      "R_halo": 0.006519354809172135,
+      "R_count_halo": 0.006409365327833881
+    },
+    {
+      "mass_meV": 2.0,
+      "geometry": "same_active_volume",
+      "pickups": 1,
+      "nx": 1,
+      "ny": 1,
+      "uniform_profile": false,
+      "R": 218.29926765928684,
+      "R_count": 208.29031740110818,
+      "chi_radiative": 0.9313768786816996,
+      "chi_peak": 0.9772817875166825,
+      "chi_FWHM_edges": [
+        0.9773861269466909,
+        0.9778058496016189
+      ],
+      "R_halo": 198.27299772363003,
+      "R_count_halo": 189.18224541358052
+    },
+    {
+      "mass_meV": 2.0,
+      "geometry": "same_active_volume",
+      "pickups": 4,
+      "nx": 1,
+      "ny": 4,
+      "uniform_profile": false,
+      "R": 13.655448390634987,
+      "R_count": 13.0642973070968,
+      "chi_radiative": 0.9313768786816996,
+      "chi_peak": 0.9127604703712325,
+      "chi_FWHM_edges": [
+        0.9129117882191975,
+        0.9148032656287703
+      ],
+      "R_halo": 14.21815430201596,
+      "R_count_halo": 13.602643402548598
+    },
+    {
+      "mass_meV": 2.0,
+      "geometry": "same_active_volume",
+      "pickups": 16,
+      "nx": 1,
+      "ny": 16,
+      "uniform_profile": false,
+      "R": 0.850201761103262,
+      "R_count": 0.7831144020687213,
+      "chi_radiative": 0.9313768786816996,
+      "chi_peak": 0.9110222649477451,
+      "chi_FWHM_edges": [
+        0.9099360104890789,
+        0.9067019615243254
+      ],
+      "R_halo": 0.8886176252138986,
+      "R_count_halo": 0.8184989635096621
+    },
+    {
+      "mass_meV": 2.0,
+      "geometry": "same_active_volume",
+      "pickups": 64,
+      "nx": 1,
+      "ny": 64,
+      "uniform_profile": false,
+      "R": 0.5100446082228519,
+      "R_count": 0.5084398796350849,
+      "chi_radiative": 0.9313768786816996,
+      "chi_peak": 0.9100928713652909,
+      "chi_FWHM_edges": [
+        0.912312761860989,
+        0.9093868046683996
+      ],
+      "R_halo": 0.5341800206409643,
+      "R_count_halo": 0.5324993559769001
+    },
+    {
+      "mass_meV": 2.0,
+      "geometry": "same_active_volume",
+      "pickups": 1,
+      "nx": 1,
+      "ny": 1,
+      "uniform_profile": true,
+      "R": 0.5025659140342023,
+      "R_count": 0.4972398640177346,
+      "chi_radiative": 0.9313768786816996,
+      "chi_peak": 0.9115613963269413,
+      "chi_FWHM_edges": [
+        0.9109399762731223,
+        0.9126770208362324
+      ],
+      "R_halo": 0.5246529082814542,
+      "R_count_halo": 0.5190927866083356
+    },
+    {
+      "mass_meV": 2.0,
+      "geometry": "30mm_available_depth",
+      "pickups": 1,
+      "nx": 1,
+      "ny": 1,
+      "uniform_profile": false,
+      "R": 21.3161667663206,
+      "R_count": 20.381422470133803,
+      "chi_radiative": 0.9313768786816996,
+      "chi_peak": 0.9772703143292116,
+      "chi_FWHM_edges": [
+        0.977284296349125,
+        0.9778537950237944
+      ],
+      "R_halo": 19.361125519470416,
+      "R_count_halo": 18.512112568620555
+    },
+    {
+      "mass_meV": 2.0,
+      "geometry": "30mm_available_depth",
+      "pickups": 4,
+      "nx": 4,
+      "ny": 1,
+      "uniform_profile": false,
+      "R": 1.3629775349257471,
+      "R_count": 1.3012696887769821,
+      "chi_radiative": 0.9313768786816996,
+      "chi_peak": 0.9754822251549105,
+      "chi_FWHM_edges": [
+        0.9754639049402116,
+        0.9756219740701619
+      ],
+      "R_halo": 1.2425128303737871,
+      "R_count_halo": 1.1862589387212374
+    },
+    {
+      "mass_meV": 2.0,
+      "geometry": "30mm_available_depth",
+      "pickups": 16,
+      "nx": 2,
+      "ny": 8,
+      "uniform_profile": false,
+      "R": 0.0749254238521345,
+      "R_count": 0.0705333681139027,
+      "chi_radiative": 0.9313768786816996,
+      "chi_peak": 0.9077611224364264,
+      "chi_FWHM_edges": [
+        0.9085223417152523,
+        0.9036108876578902
+      ],
+      "R_halo": 0.07887456108980687,
+      "R_count_halo": 0.07425101075369313
+    },
+    {
+      "mass_meV": 2.0,
+      "geometry": "30mm_available_depth",
+      "pickups": 64,
+      "nx": 4,
+      "ny": 16,
+      "uniform_profile": false,
+      "R": 0.0054507850986763,
+      "R_count": 0.005120937376886043,
+      "chi_radiative": 0.9313768786816996,
+      "chi_peak": 0.9090734589142825,
+      "chi_FWHM_edges": [
+        0.9083864332681653,
+        0.9061542281374224
+      ],
+      "R_halo": 0.0057215277418120845,
+      "R_count_halo": 0.005375296353740157
+    },
+    {
+      "mass_meV": 2.0,
+      "geometry": "30mm_available_depth",
+      "pickups": 1,
+      "nx": 1,
+      "ny": 1,
+      "uniform_profile": true,
+      "R": 0.0011883817637100174,
+      "R_count": 0.001170679898128831,
+      "chi_radiative": 0.9313768786816996,
+      "chi_peak": 0.9094675298967412,
+      "chi_FWHM_edges": [
+        0.909011062256583,
+        0.910579002829995
+      ],
+      "R_halo": 0.0012463283870516248,
+      "R_count_halo": 0.0012277633616941772
+    },
+    {
+      "mass_meV": 4.0,
+      "geometry": "same_active_volume",
+      "pickups": 1,
+      "nx": 1,
+      "ny": 1,
+      "uniform_profile": false,
+      "R": 1212.038590357537,
+      "R_count": 1149.727123468376,
+      "chi_radiative": 0.7629207063607744,
+      "chi_peak": 0.9168965305569691,
+      "chi_FWHM_edges": [
+        0.9169592010766978,
+        0.917209625330301
+      ],
+      "R_halo": 839.1403280233484,
+      "R_count_halo": 795.9997340018641
+    },
+    {
+      "mass_meV": 4.0,
+      "geometry": "same_active_volume",
+      "pickups": 4,
+      "nx": 1,
+      "ny": 4,
+      "uniform_profile": false,
+      "R": 75.75197435260627,
+      "R_count": 71.8572930239602,
+      "chi_radiative": 0.7629207063607744,
+      "chi_peak": 0.7097428454582324,
+      "chi_FWHM_edges": [
+        0.7097789930190584,
+        0.7099083910291479
+      ],
+      "R_halo": 87.52874756359702,
+      "R_count_halo": 83.02857998685599
+    },
+    {
+      "mass_meV": 4.0,
+      "geometry": "same_active_volume",
+      "pickups": 16,
+      "nx": 1,
+      "ny": 16,
+      "uniform_profile": false,
+      "R": 4.712210671978993,
+      "R_count": 4.47713227776017,
+      "chi_radiative": 0.7629207063607744,
+      "chi_peak": 0.7003438706183799,
+      "chi_FWHM_edges": [
+        0.7006753831190783,
+        0.6980044126562677
+      ],
+      "R_halo": 5.59191857274079,
+      "R_count_halo": 5.312954126923631
+    },
+    {
+      "mass_meV": 4.0,
+      "geometry": "same_active_volume",
+      "pickups": 64,
+      "nx": 1,
+      "ny": 64,
+      "uniform_profile": false,
+      "R": 0.4774192624258731,
+      "R_count": 0.4532058325083084,
+      "chi_radiative": 0.7629207063607744,
+      "chi_peak": 0.70330816507805,
+      "chi_FWHM_edges": [
+        0.7015625987743485,
+        0.6998693483419304
+      ],
+      "R_halo": 0.5617814867195543,
+      "R_count_halo": 0.53328943009714
+    },
+    {
+      "mass_meV": 4.0,
+      "geometry": "same_active_volume",
+      "pickups": 1,
+      "nx": 1,
+      "ny": 1,
+      "uniform_profile": true,
+      "R": 0.4574187709601703,
+      "R_count": 0.4531094416330827,
+      "chi_radiative": 0.7629207063607744,
+      "chi_peak": 0.7003681056403441,
+      "chi_FWHM_edges": [
+        0.7009981625322846,
+        0.7002430404775665
+      ],
+      "R_halo": 0.5427752878946185,
+      "R_count_halo": 0.5376618172313291
+    },
+    {
+      "mass_meV": 4.0,
+      "geometry": "30mm_available_depth",
+      "pickups": 1,
+      "nx": 1,
+      "ny": 1,
+      "uniform_profile": false,
+      "R": 149.95714262285333,
+      "R_count": 142.1475538664733,
+      "chi_radiative": 0.7629207063607744,
+      "chi_peak": 0.9168904521822254,
+      "chi_FWHM_edges": [
+        0.9169019421675738,
+        0.9172288537283234
+      ],
+      "R_halo": 103.82239910734712,
+      "R_count_halo": 98.41545265219659
+    },
+    {
+      "mass_meV": 4.0,
+      "geometry": "30mm_available_depth",
+      "pickups": 4,
+      "nx": 4,
+      "ny": 1,
+      "uniform_profile": false,
+      "R": 9.291459106475658,
+      "R_count": 8.781705957932571,
+      "chi_radiative": 0.7629207063607744,
+      "chi_peak": 0.909761899762852,
+      "chi_FWHM_edges": [
+        0.909831872498232,
+        0.9101565902182234
+      ],
+      "R_halo": 6.534121930720681,
+      "R_count_halo": 6.175643333443325
+    },
+    {
+      "mass_meV": 4.0,
+      "geometry": "30mm_available_depth",
+      "pickups": 16,
+      "nx": 16,
+      "ny": 1,
+      "uniform_profile": false,
+      "R": 0.8155513698802785,
+      "R_count": 0.7787739110105116,
+      "chi_radiative": 0.7629207063607744,
+      "chi_peak": 0.9097676387291354,
+      "chi_FWHM_edges": [
+        0.909631515666924,
+        0.9098500288737466
+      ],
+      "R_halo": 0.5735207785315795,
+      "R_count_halo": 0.5476577395834648
+    },
+    {
+      "mass_meV": 4.0,
+      "geometry": "30mm_available_depth",
+      "pickups": 64,
+      "nx": 8,
+      "ny": 8,
+      "uniform_profile": false,
+      "R": 0.03551673204357263,
+      "R_count": 0.03353272178785647,
+      "chi_radiative": 0.7629207063607744,
+      "chi_peak": 0.6967648142974058,
+      "chi_FWHM_edges": [
+        0.69677905864335,
+        0.6962199624482901
+      ],
+      "R_halo": 0.0425813455332731,
+      "R_count_halo": 0.04020269689700321
+    },
+    {
+      "mass_meV": 4.0,
+      "geometry": "30mm_available_depth",
+      "pickups": 1,
+      "nx": 1,
+      "ny": 1,
+      "uniform_profile": true,
+      "R": 0.00022385389324667242,
+      "R_count": 0.00021992233524004034,
+      "chi_radiative": 0.7629207063607744,
+      "chi_peak": 0.6944556302295747,
+      "chi_FWHM_edges": [
+        0.6945006276863217,
+        0.6944342373607574
+      ],
+      "R_halo": 0.0002701683372191014,
+      "R_count_halo": 0.0002654233561337745
+    }
+  ],
+  "loss_thresholds": [
+    {
+      "mass_meV": 0.5,
+      "geometry": "same_active_volume",
+      "R_best_port": 0.4151950187300311,
+      "R_count_best_port": 0.409343130464275,
+      "optics_power_efficiency": 0.8,
+      "port_loss_for_parity_dB": 2.8778394577937494,
+      "guide_length_for_parity_cm": 153.42211492257582,
+      "guide": {
+        "a_mm": 2.107731373364405,
+        "b_mm": 1.0538656866822025,
+        "surface_resistance_ohm": 0.05151222915565455,
+        "attenuation_amplitude_Np_m": 0.2159555106801256,
+        "power_loss_dB_m": 1.875765732499546
+      },
+      "conditional_R_20cm": 0.31583680503302236,
+      "port_receiver_count": 1
+    },
+    {
+      "mass_meV": 0.5,
+      "geometry": "30mm_available_depth",
+      "R_best_port": 0.03546199006484778,
+      "R_count_best_port": 0.03483587669519807,
+      "optics_power_efficiency": 0.8,
+      "port_loss_for_parity_dB": 8.220284611103674,
+      "guide_length_for_parity_cm": 438.236207681956,
+      "guide": {
+        "a_mm": 2.107731373364405,
+        "b_mm": 1.0538656866822025,
+        "surface_resistance_ohm": 0.05151222915565455,
+        "attenuation_amplitude_Np_m": 0.2159555106801256,
+        "power_loss_dB_m": 1.875765732499546
+      },
+      "conditional_R_20cm": 0.026975761116914847,
+      "port_receiver_count": 1
+    },
+    {
+      "mass_meV": 1.0,
+      "geometry": "same_active_volume",
+      "R_best_port": 0.4620203403224983,
+      "R_count_best_port": 0.4552100420014788,
+      "optics_power_efficiency": 0.8,
+      "port_loss_for_parity_dB": 2.645794651700717,
+      "guide_length_for_parity_cm": 44.42842085262657,
+      "guide": {
+        "a_mm": 1.0538656866822025,
+        "b_mm": 0.5269328433411012,
+        "surface_resistance_ohm": 0.08177056675091299,
+        "attenuation_amplitude_Np_m": 0.6856160096639222,
+        "power_loss_dB_m": 5.955184994031359
+      },
+      "conditional_R_20cm": 0.5117389449612183,
+      "port_receiver_count": 1
+    },
+    {
+      "mass_meV": 1.0,
+      "geometry": "30mm_available_depth",
+      "R_best_port": 0.006519354809172135,
+      "R_count_best_port": 0.006409365327833881,
+      "optics_power_efficiency": 0.8,
+      "port_loss_for_parity_dB": 11.898077041513798,
+      "guide_length_for_parity_cm": 199.79357574011152,
+      "guide": {
+        "a_mm": 1.0538656866822025,
+        "b_mm": 0.5269328433411012,
+        "surface_resistance_ohm": 0.08177056675091299,
+        "attenuation_amplitude_Np_m": 0.6856160096639222,
+        "power_loss_dB_m": 5.955184994031359
+      },
+      "conditional_R_20cm": 0.00722091098747917,
+      "port_receiver_count": 1
+    },
+    {
+      "mass_meV": 2.0,
+      "geometry": "same_active_volume",
+      "R_best_port": 0.5246529082814542,
+      "R_count_best_port": 0.5190927866083356,
+      "optics_power_efficiency": 0.8,
+      "port_loss_for_parity_dB": 2.3697397070432187,
+      "guide_length_for_parity_cm": 12.533972255554998,
+      "guide": {
+        "a_mm": 0.5269328433411012,
+        "b_mm": 0.2634664216705506,
+        "surface_resistance_ohm": 0.12980268368043515,
+        "attenuation_amplitude_Np_m": 2.176695149973499,
+        "power_loss_dB_m": 18.906533848381233
+      },
+      "conditional_R_20cm": 1.9156378636443705,
+      "port_receiver_count": 1
+    },
+    {
+      "mass_meV": 2.0,
+      "geometry": "30mm_available_depth",
+      "R_best_port": 0.0012463283870516248,
+      "R_count_best_port": 0.0012277633616941772,
+      "optics_power_efficiency": 0.8,
+      "port_loss_for_parity_dB": 15.490937695775315,
+      "guide_length_for_parity_cm": 81.93430810746752,
+      "guide": {
+        "a_mm": 0.5269328433411012,
+        "b_mm": 0.2634664216705506,
+        "surface_resistance_ohm": 0.12980268368043515,
+        "attenuation_amplitude_Np_m": 2.176695149973499,
+        "power_loss_dB_m": 18.906533848381233
+      },
+      "conditional_R_20cm": 0.004550653986826102,
+      "port_receiver_count": 1
+    },
+    {
+      "mass_meV": 4.0,
+      "geometry": "same_active_volume",
+      "R_best_port": 0.5427752878946185,
+      "R_count_best_port": 0.53328943009714,
+      "optics_power_efficiency": 0.8,
+      "port_loss_for_parity_dB": 2.295999798216097,
+      "guide_length_for_parity_cm": 3.8251041935094308,
+      "guide": {
+        "a_mm": 0.2634664216705506,
+        "b_mm": 0.1317332108352753,
+        "surface_resistance_ohm": 0.2060489166226182,
+        "attenuation_amplitude_Np_m": 6.91057634176402,
+        "power_loss_dB_m": 60.02450343998547
+      },
+      "conditional_R_20cm": 87.45410064138841,
+      "port_receiver_count": 1
+    },
+    {
+      "mass_meV": 4.0,
+      "geometry": "30mm_available_depth",
+      "R_best_port": 0.0002701683372191014,
+      "R_count_best_port": 0.0002654233561337745,
+      "optics_power_efficiency": 0.8,
+      "port_loss_for_parity_dB": 18.810927880684133,
+      "guide_length_for_parity_cm": 31.338748015619878,
+      "guide": {
+        "a_mm": 0.2634664216705506,
+        "b_mm": 0.1317332108352753,
+        "surface_resistance_ohm": 0.2060489166226182,
+        "attenuation_amplitude_Np_m": 6.91057634176402,
+        "power_loss_dB_m": 60.02450343998547
+      },
+      "conditional_R_20cm": 0.043530590799231765,
+      "port_receiver_count": 1
+    }
+  ],
+  "halo_assumptions": {
+    "sigma_km_s": 155.56349186104043,
+    "wind_y_km_s": 232,
+    "wire_length_m": 0.1,
+    "method": "Reciprocal profile at the peak; multiplication of scan integrals by chi_peak squared. Port variation across FWHM is recorded. Radiative source phase across the thin depth is neglected."
+  }
+}

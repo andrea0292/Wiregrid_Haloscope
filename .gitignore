@@ -15,3 +15,5 @@ code/fw_reconcile*.json
 code/finite_tile/finite_tile_repro.json
 code/sqware_scan_cfg*.csv
 code/sqware_formula_check.csv
+data/*_repro.csv
+code/finite_collection/**/__pycache__/

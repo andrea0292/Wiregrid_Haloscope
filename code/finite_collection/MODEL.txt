@@ -1,0 +1,158 @@
+FINITE COLLECTION COMPARISON: MATHEMATICAL SPECIFICATION
+
+This is an independent reduced-model comparison. It does not reproduce
+the finite-wire boundary-element code of code/finite_tile/ or assume its pickup-spacing law.
+The main note explains the physical conclusion. This file specifies the
+new port operator and the approximations used to translate its result.
+
+1. Geometry, polarization and normalization
+
+The plasma occupies 0<x<L, 0<y<W and a wire length H=0.10 m in z.
+The static field and wires point along z. We keep the z-independent E_z
+sector with PEC walls in x and y. The end-wall condition is compatible with
+this sector. A physical probe localized along z would need a further 3D
+calculation; here each pickup is an optimistic extended column along z.
+
+The orthonormal transverse basis is
+  phi_mn(x,y) = (2/sqrt(L W)) sin(m pi x/L) sin(n pi y/W).
+The dimensionless uniform-source coefficients are f_mn=8/(pi^2 m n) for
+odd m,n and zero otherwise. Symmetric, equal-phase pickup arrays only couple
+the odd-odd sector. The finite basis captures the relevant near-resonance
+field; omitted high-order modes have small response, as checked by refinement.
+
+Define omega0=2 pi nu0, k0=omega0/c, z=omega/omega0, p=omega_p/omega0,
+and gamma(z)=Gamma_p(z)/omega0. The copper damping obeys
+  Gamma_p(z) = R_s(z nu0)/(mu0 r ell),
+  ell = ln[a/(2 pi r)] + F_square, F_square=0.52734... .
+The starting square-lattice pitch is selected with r/a=0.03 and
+  omega_p^2 = 2 pi c^2/(a^2 ell).
+The starting plasma frequency compensates the PEC fundamental cutoff:
+  p_base^2 = 1 - [(pi/L)^2+(pi/W)^2]/k0^2.
+We subsequently retune p at fixed wire damping so the loaded resonance
+peaks at omega0. This is effective-medium tuning, not an independently
+calibrated formula for the required microscopic wire displacements.
+
+Q_* = omega0/[Gamma_p(1) p_base^2] is a fixed normalization reference.
+The actual unloaded material Q after retuning is
+  Q_u = omega0/[Gamma_p(1) p^2].
+The response quality factor is a different quantity: peak frequency/FWHM.
+The code records Q_reference, Q_unloaded, Q_response and the plasma retuning.
+
+2. Maxwell operator and a passive coherent receiver
+
+With E/E0 = Q_* sum_j e_j phi_j sqrt(LW), the dimensionless modal operator is
+  D_j(z) = Q_* [q_j^2/k0^2 - z^2 + p^2 z/(z+i gamma(z))],
+  q_mn^2=(m pi/L)^2+(n pi/W)^2.
+The source is z^2 f. A single receiving mode with unit-normalized spatial
+profile u has a separable load
+  [D + z (alpha-i zeta) u u^dagger] e = z^2 f.
+Here alpha is a real reactive load and zeta>0 is dissipative extraction into
+the receiver. These are dimensionless network parameters. In a multimode
+device zeta is not in general the external/internal decay ratio of one mode.
+The anti-Hermitian part of the added operator is negative semidefinite:
+the load is passive under the exp(-i omega t) convention.
+
+The profile is the normalized sum of K equal-phase Gaussian columns,
+  u(x,y) proportional to sum_j exp[-((x-x_j)^2+(y-y_j)^2)/w^2].
+The columns are placed at regular cell centers. All allowed tested grid
+shapes are listed in each result. The nominal width is w=2a, and w=a,4a
+are checked at 0.5,1,2 meV. A normalized continuous profile u=f/|f| is a
+separate optimistic distributed receiver. None of these is claimed to be
+the best possible probe shape or an actual combiner implementation.
+
+There is one output bath even for K>1. A lossless coherent network therefore
+gets the benefit of nonlocal collection without an invented K-fold detector
+noise penalty. Its routing and fabrication cost are not estimated.
+
+The rank-one inverse is evaluated exactly. Let
+  G=u^dagger D^-1 u, H=z^2 u^dagger D^-1 f,
+  t=H/[1+z(alpha-i zeta)G].
+Then u^dagger e=t and
+  e=D^-1[z^2 f-z(alpha-i zeta)u t].
+The output power boost relative to a bare mirror of area W H is
+  b_port = k0 L Q_* zeta |t|^2.
+Alpha and zeta are numerically searched, and the plasma is then retuned at
+fixed chosen load to center the loaded resonance. All reported peaks are
+at the nominal comparison frequency to the frequency-grid precision.
+This is an optimization within the stated family, not a proof of a global
+optimum over antenna designs, geometries and all passive matching networks.
+
+The source-work identity is
+  Im[(z^2 f)^dagger e] = sum_j[-Im D_j]|e_j|^2 + z zeta |t|^2.
+Both terms on the right are nonnegative. The code evaluates this identity
+at each optimized peak. An independently assembled sparse finite-difference
+Helmholtz operator provides a second field-solution check.
+
+3. Radiation and statistical comparison
+
+The radiative model uses vector mode matching for the discrete impedance
+sheets and a free-space aperture radiation admittance. Propagation between
+sheets is explicit. The radiative admittance and Gaussian port are held at
+the nominal frequency across each spectrum; the existing model's prior
+frequency and modal checks justify that narrow-resonance approximation.
+The present calculation independently refines modes and quadrature at 1 meV.
+At 4 meV, a paraxial-admittance high-mode check raises the central integral
+by about 2% between 60 and 240 modes; the 120-to-240 change is about 0.41%.
+At 60 modes the paraxial and full-admittance peak powers differ by 0.0034%.
+The highest-mass numbers should therefore be read at few-percent numerical
+precision, separately from their larger hardware-model uncertainties.
+The aperture model is not wire-surface-resolved and uses an infinite flange.
+
+The common metric is I=integral b(z)^2 d ln z over 0.85<z<1.15. Treating
+local tuning spectra as translated profiles gives the scan-rate ratio
+  R = (I_rad/I_port) (eta_rad/eta_port)^2 (S_port/S_rad)^2.
+S denotes output noise spectral density. At fixed observing time the
+coupling ratio is R^(-1/4). Numerical g, B, density, area and total live time
+cancel in this relative comparison. They are not varied to produce a win.
+
+For a background-dominated, single-output counting comparison with equal
+dark backgrounds, the integral between the half-maximum crossings is also
+recorded. That is an optimally centered one-FWHM rectangular signal filter;
+for an asymmetric spectrum its center need not equal the peak. The adopted
+hardware settings are those searched with the full-band metric, so the
+counting comparison is not independently optimized. No new absolute
+photon-counting reach is claimed. The earlier QCD-target forecast is unchanged.
+
+4. Halo correction
+
+For each receiver, average the squared reciprocal overlap with
+exp(i k_a . x), k_a=(omega0/c^2) v, over Gaussian velocities. The transverse
+y wind is 232 km/s, with dispersion 220/sqrt(2) km/s along all axes.
+For the port, the reciprocal modal field is proportional to D^-1 u and the
+spatial transform factorizes. The uniform z profile contributes sinc(k_z H/2).
+For the radiative model, the depth-integrated reciprocal E_z coefficients
+are obtained from the actual passive Gaussian illumination. Phase across
+its thin depth is neglected. Gauss-Hermite velocity integration gives the
+mean received power. The peak power factor chi multiplies each narrow-band
+integral as chi^2. Its variation across the port FWHM is below 0.5% in the
+checked cases. A full directional, time-dependent halo scan is beyond this
+comparison, as is a joint exact spatial and frequency line-shape treatment.
+
+5. Downstream transport and available volume
+
+The optional guide loss is a matched attenuator AFTER an ideal combiner.
+It is not modeled as distributed loss inside the coherent pickup network.
+This distinction preserves the assumed loading/backaction. Actual lossy
+combiner branches could change both extraction and noise and require a new
+multiport model. The guide uses TE10, a_w/b_w=2 and nu/nu_cutoff=1.7.
+Its surface resistance is initially the same assumed copper law as the
+converter; half that resistance doubles the parity length. The optical
+power transmission 0.8 is an explicit benchmark, not a measurement.
+
+At equal receiver noise the parity power loss is
+  Loss_port_dB = -10 log10[eta_rad sqrt(I_rad/I_port)].
+All paths must be cold and filtered consistently with the detector noise
+budget. Alternative guides, free-space output and different receiver
+placement can avoid the illustrative loss. No actual ALPHA chain is assigned
+these losses. The available-depth calculation allows the port to occupy
+30 mm while retaining one radiating face for the grid design. It is not a
+global optimization of a solenoid, folded optics or multiple radiating faces.
+
+6. Appropriate use
+
+This calculation supplies a falsifiable engineering target for a prototype:
+measure the delivered overlap, response width, collection and transmission
+at equal usable magnetic volume and receiver resources. Its strongest
+conclusion is conditional advantage in specified sparse-collection or
+transport-loss regimes. It does not prove novelty over all literature,
+universal superiority over ALPHA, or demonstrated QCD-axion sensitivity.

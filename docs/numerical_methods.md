@@ -89,13 +89,15 @@ E_p(ω) = Δt J(ω) / (2iε0 sin(ωΔt/2)), and E0 = −E_p normalizes β.
 **Validation.**
 - With a bare mirror, the normalization is reproduced to 1e-5.
 - Infinite-wire FDTD vs the sheet model at the same numerical k (lossy, 1–2 meV): f = 1.0073 ν_c, β² 1707 vs 1693, Q_r 252 vs 246.
-- Finite wires are always compared with the same-mesh infinite-wire run, so the discretization error cancels.
+- Finite wires are always compared with the same-mesh infinite-wire run. This removes the discretization error common to both
+  (mostly the numerical wire inductance), but it is not a mesh-convergence study: the finite-length runs were done at a single
+  resolution (D = a/6) and the residual mesh dependence of the end effects is not quantified.
 - Doubling the free-space margin between the frames and the absorber (60 → 120 cells, 0.25–0.5 meV, bars) leaves the peak,
   Q_r and the total-power scan integral unchanged to 1e-4. The Gaussian-collected value changes from 0.803 to 0.798.
 
 **Result** (`data/fdtd3d/fdtd3d_finite_wire_summary.csv`)
 
-| cartridge | W/λ | ends | Δf/ν_c | Q_r/Q_∞ | β²_tot/∞ | √(𝓘_G/𝓘_∞) |
+| cartridge | W/λ | ends | Δf/ν_c | Q_r/Q_∞ | peak β²_tot/∞ | √(𝓘_G/𝓘_∞) |
 |---|---|---|---|---|---|---|
 | 1–2 meV | 114 | bars | <1e-4 | 0.98 | 0.97 | 0.90 |
 | 1–2 meV | 114 | walls | <1e-4 | 1.00 | 1.00 | 0.92 |
@@ -104,9 +106,21 @@ E_p(ω) = Δt J(ω) / (2iε0 sin(ωΔt/2)), and E0 = −E_p normalizes β.
 | 0.25–0.5 meV | 28.5 | walls | <1e-4 | 1.00 | 1.00 | 0.90 |
 | 0.25–0.5 meV | 28.5 | open | 2e-4 | 0.92 | 0.84 | 0.78 |
 
-Δf/ν_c is quoted on the 1e-4 frequency grid, so "<1e-4" means no shift was resolved. The ideal uniform-aperture value of the last column is 0.89 in one dimension. Conducting side walls make the
+Δf/ν_c is quoted on the 1e-4 frequency grid, so "<1e-4" means no shift was resolved. The last column is an effective
+power-collection efficiency along the wire direction only (it is the square root of a ratio of ∫|β|⁴ dν integrals); its value
+for an ideal uniform aperture is 0.89 in one dimension, against 0.79 for the full square tile. Conducting side walls make the
 wire-direction response indistinguishable from infinite wires. With thin bars or open ends, the lowest cartridge loses a further
-≈ 10 % in collected amplitude, which is within the η_ap = 0.65 margin.
+≈ 10 % in effective collected power (0.80/0.89), i.e. a ≈ 5 % increase in the minimum coupling, within the η_ap = 0.65
+margin. Only two cartridge centres were run; the result is evidence for a small correction, not a bound for every setting.
+
+### Material models used by the different checks
+The checks are complementary geometry tests, not identical-material implementations of one device:
+- sheet model (§1): R_g from R_s, inductance from ln(a/2πr) — reactance of the copper surface neglected;
+- circular-wire solver (§2) and reach correction: Z_s = R_s(1 − i√3) (extreme anomalous skin effect);
+- finite-tile solver (§3, `finite_tile/finite_tile_analysis.py`): Z_s = R_s(1 − i);
+- 3D FDTD (§4): resistive wire lines, inductance from the numerical wire radius;
+- flanged mode-matching enclosure (§7): impedance sheets, macroscopic fields.
+Each finite-geometry result is quoted relative to the periodic result of the same model.
 
 ## 5. FDFD cross-check (`code/validation/fdfd_check.py`, `run_fdfd_crosscheck.py`)
 
@@ -120,3 +134,27 @@ Linear extrapolation in Δx agrees with the multipole solver to ~1e-6 in frequen
   `beta_pos()`. The rms error that raises g by 5 % is 6.0, 3.8, 2.4, 1.4 and 0.7 µm for the five cartridges.
 - **Common-gap change:** a static change only shifts the resonance. The tabulated values (0.42–0.13 µm) are defined by a 10 % peak-power loss at
   fixed frequency. Gaussian jitter of rms σ_d = (0.5, 1, 2, 3, 5)× this value raises g by (0.3, 1.2, 4.0, 7.2, 13.4) %.
+
+## 7. Flanged-enclosure mode matching and port comparison (`code/finite_collection/`)
+
+An independent package (see its README.txt and MODEL.txt): vector mode matching for N impedance sheets in a finite
+W × H aperture of an infinite PEC flange, with PEC back, side and end walls (so the wires terminate on conducting walls),
+exterior admittance from Galerkin scalar-Green integrals. It gives the bandwidth-weighted collection √(𝓘_G/𝓘) = 0.72–0.78 quoted
+in S2, and the distributed-port comparison of End Matter B. `volcheck2.py` (equal-volume comparison) runs from that directory.
+Run: `cd code/finite_collection && python reproduce_all.py` (results are cached in `results/`).
+
+## 8. Halo factor ξ (`reproduce_final.chi_their`)
+
+ξ = ⟨|∫ u e^{i k_a·x} d²x|²⟩ / |∫ u d²x|² is evaluated over the square tile of side W, with the Gaussian receiver mode
+u = exp(−|x|²/w²), w = W/2, truncated at the tile edge, for a Gaussian halo of 1D dispersion 220/√2 km/s and the 232 km/s mean
+wind lying in the tile plane (along one tile axis). This is the least favourable orientation of the mean wind.
+Values: ξ = 0.98 (1 meV), 0.96 (1.41 meV), 0.76 (4 meV) for 10 cm tiles; 0.87 (5.66 meV), 0.76 (8 meV) for 5 cm tiles.
+With the wind normal to the tile the same calculation gives 0.99, 0.98, 0.88, 0.93, 0.88. The untruncated-Gaussian estimate
+⟨exp(−k⊥²w²/2)⟩ is lower (0.78 at 4 meV with the wind normal, 0.62 with the wind in plane) because truncation at the tile edge
+narrows the aperture.
+
+## 9. Overlap form of the boost (`code/validation/overlap_receiving_mode.py`, `overlap_modes_figure.py`)
+
+By reciprocity, β = (ik/2) ∫₀ᴸ E_rec(s) ds, where E_rec is the field set up by a unit plane wave incident from the detector side
+(SM S3). The script checks this against the direct solver (agreement 2×10⁻⁶ for all five cartridges) and draws the receiving
+mode for the stack modes m = 1, 2, 3 (KL ≈ mπ): only m = 1 adds coherently; even m are dark.

@@ -97,6 +97,9 @@ def J_both(m_a, DES, TRJ):
     return out
 
 def chi_their(m_meV,w=0.05,L=0.10,wind=232e3,sigv=220e3/np.sqrt(2)):
+    """Halo factor xi used in all forecasts: Gaussian receiver mode exp(-x^2/w^2) truncated to the square tile of side L,
+    Gaussian halo (1D dispersion sigv) with the mean wind `wind` IN the tile plane along one axis (least favourable
+    orientation); product of the two 1D factors. wind=0 gives the wind-normal case."""
     k=2*np.pi*nu_of_m(m_meV*1e-3)/c0
     xx=np.linspace(-L/2,L/2,2001); u=np.exp(-xx**2/w**2); n0=abs(np.trapezoid(u,xx))**2
     tg_,wg_=np.polynomial.hermite.hermgauss(40)
