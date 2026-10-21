@@ -1,0 +1,344 @@
+\documentclass[
+  aps,prl,reprint,superscriptaddress,
+  amsmath,amssymb,floatfix,nofootinbib
+]{revtex4-2}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+\newcommand{\meV}{\,\mathrm{meV}}
+\newcommand{\gagg}{g_{a\gamma\gamma}}
+\newcommand{\Qm}{Q_{\rm m}}
+\newcommand{\Qr}{Q_{\rm r}}
+\newcommand{\dd}{\mathrm d}
+
+\renewcommand{\topfraction}{0.98}
+\renewcommand{\textfraction}{0.02}
+\renewcommand{\floatpagefraction}{0.9}
+\begin{document}
+
+\title{A Radiative Wire-Grid Plasma Haloscope for Millielectronvolt Axion and Dark-Photon Dark Matter}
+
+\author{Andrea Caputo}
+\affiliation{Department of Theoretical Physics, CERN, Esplanade des Particules 1, P.O. Box 1211, Geneva 23, Switzerland}
+\affiliation{School of Natural Sciences, Institute for Advanced Study, Princeton, NJ 08540, USA}
+\affiliation{Dipartimento di Fisica, ``Sapienza'' Universit\`a di Roma \& Sezione INFN Roma1, Piazzale Aldo Moro 5, 00185, Roma, Italy}
+
+\date{\today}
+\begin{abstract}
+Plasma haloscopes such as ALPHA read wire metamaterials with antennas, but at meV masses ohmic losses limit the volume an antenna reads. We propose a mirror-backed, spacing-tuned stack of wire grids that acts as an epsilon-near-zero slab and radiates the signal through its face to external optics, as in the quantum-well proposal SQWARE but over square meters. In 10\,T, a 1\,m$^2$ array probes couplings below stellar bounds up to 1.6\,meV with kinetic-inductance detectors and reaches the KSVZ axion over 0.8--2.6\,meV with photon counters. Without a magnet, it probes dark-photon mixings down to $5\times10^{-16}$.
+
+\end{abstract}
+
+
+
+\maketitle
+
+\begin{figure}[t]
+\includegraphics[width=0.9\columnwidth]{fig1.pdf}
+\caption{A mirror and $N$ free-standing grids of wires parallel to $\mathbf B_0$, at spacing $d$, form an epsilon-near-zero (ENZ) slab. On resonance the slab emits $|\beta|^2P_{\rm dish}$ through its face, which external optics focus onto a detector. Tuning changes only $d$.}
+\label{fig:concept}
+\end{figure}
+
+
+\textit{Introduction.}---The QCD axion is a very well motivated new particle, introduced to explain why the strong interactions conserve CP~\cite{Peccei:1977hh,Weinberg:1977ma,Wilczek:1977pj}, and subsequently recognized as one of the most appealing dark matter (DM) candidates~\cite{Preskill:1982cy,Abbott:1982af,Dine:1982ah}. It couples to photons through the interaction $\mathcal L\supset\gagg a\,\mathbf E\cdot\mathbf B$, with a coupling proportional to its mass, $|\gagg|\simeq2.04\times10^{-13}|C_{a\gamma}|(m_a/{\rm meV})\,{\rm GeV}^{-1}$, where $|C_{a\gamma}|=1.92$ in the KSVZ model~\cite{Kim:1979if,Shifman:1979if} and 0.75 in the DFSZ-I model~\cite{Dine:1981rt,Zhitnitsky:1980tq,DiLuzio:2020wdo}. The mass itself is not predicted by the model. However, if the Peccei--Quinn symmetry is broken after inflation, simulations of the axion-string network point to $m_a\sim0.04$--$0.45\meV$~\cite{Buschmann:2021sdq,Saikawa:2024bta} or to larger values~\cite{Gorghetto:2020qws}, so masses around a meV are very well motivated. They are also largely unexplored by axion haloscopes; a search near 0.11\,meV illustrates the progress toward this range~\cite{Quiskamp:2023ehr}. Strong constraints on the photon coupling come from the CAST helioscope~\cite{CAST:2024eil}, from stars in globular clusters~\cite{Dolan:2022kul} and, at the lowest masses, from solar axions observed by NuSTAR~\cite{Ruz:2024gkl}; at 1\,meV the CAST and globular-cluster bounds lie 120--380 times above the QCD prediction.
+
+The difficulty at these masses is mostly geometric. In a magnetic field $\mathbf B_0$, axion DM drives a weak electric field $\mathbf E_a=-\gagg a\mathbf B_0$ that oscillates at $\nu=m_a/(2\pi)$, i.e., 242\,GHz per meV, with amplitude $E_0=\gagg a_0B_0$. Because DM is nonrelativistic, this field is nearly uniform across the depth of any device considered here. A conducting mirror placed in it must cancel the tangential field at its surface, and it does so by emitting a plane wave perpendicular to its face, with power per unit area~\cite{Horns:2012jf}
+\begin{equation}
+\frac{P_{\rm dish}}{A}=\frac{7.33\times10^{-26}\,{\rm W}}{\rm m^2}\left(\frac{\gagg\,{\rm GeV}}{10^{-12}}\,\frac{B_0}{10\,{\rm T}}\,\frac{\rm meV}{m_a}\right)^{\!2}\!\rho_{0.4},
+\label{eq:dish}
+\end{equation}
+where $\rho_{0.4}=\rho_a/(0.4\,{\rm GeV\,cm^{-3}})$. A resonant cavity would amplify this signal, but at 1\,meV the wavelength is $\lambda=1.24\,$mm, and a cavity resonant at this wavelength collects the signal from a tiny volume. Searches at high mass therefore keep a large converting area and enhance its emission in other ways. Dish antennas focus the emission of a bare mirror~\cite{Horns:2012jf,BREAD:2021tpx}, dielectric haloscopes place a stack of dielectric disks in front of the mirror, so that the waves emitted at the interfaces add coherently~\cite{Caldwell:2016dcw,Millar:2016cjp,MADMAX:2019pub}, while epsilon-near-zero (ENZ) media, such as polaritonic crystals or magnetized semiconductors, use a resonance of the material itself, at which its permittivity nearly vanishes~\cite{Schutte-Engel:2021bqm,Marsh:2022fmo,Mehrani:2025ryc}.
+
+Plasma haloscopes realize the last idea with an engineered material~\cite{Lawson:2019brd,ALPHA:2022rxj}. For an electric field along the wires, a lattice of thin parallel wires responds like a plasma whose plasma frequency is set by the wire spacing, so it can be matched to the axion mass independently of the size of the device, and the axion excites the plasma oscillation coherently over the whole volume. At meV masses the problem is to get the signal out. In existing designs an antenna inside or at the edge of the medium collects the signal, which therefore has to propagate through the wire medium to reach it. At THz frequencies the wires are lossy, and the Drude response at the plasma frequency gives a field-amplitude $1/e$ attenuation length $\ell_{\rm amp}\simeq\lambda\sqrt{2Q_u}/2\pi$, where $Q_u$ is the unloaded (that is to say, including only internal losses, here the ohmic dissipation in the wires) quality factor of the medium~\cite{ALPHA:2022rxj}. For a square copper-wire lattice with our choice $r/a=0.03$, using the lattice expressions of Ref.~\cite{ALPHA:2022rxj} and the surface resistance adopted below, $Q_u\simeq510\,(m_a/{\rm meV})^{-2/3}$, so that $\ell_{\rm amp}\simeq6.3\,{\rm mm}\,(m_a/{\rm meV})^{-4/3}$, i.e., 6.3\,mm at 1\,meV and 0.4\,mm at 8\,meV. At the tens of GHz targeted by ALPHA, $\ell_{\rm amp}$ is comparable to the apparatus and one antenna reads the plasma; at 1\,meV, distributed pickups would require $\sim10^4$ antennas per square meter, each with a THz transmission line out of the medium.
+
+In this Letter we let the plasma radiate instead. We stack a few free-standing wire grids, with the wires parallel to $\mathbf B_0$, about a quarter wavelength apart in front of a mirror (Fig.~\ref{fig:concept}). Near its resonance the stack acts as a thin ENZ slab, the axion-induced field is enhanced inside it, and the signal leaves through the whole face of the stack into the vacuum in front of it, where ordinary mirrors and lenses collect it. The signal is extracted through the stack face into external optics, without requiring lateral transport to an internal pickup. The same radiative principle underlies SQWARE~\cite{Mehrani:2025ryc}, in which the ENZ medium is a stack of GaAs/AlGaAs quantum wells with a 9--25\,cm$^2$ face, tuned by rotating it in a 36--50\,T field. Wire grids offer a practical route to a much larger conversion area at 10\,T by repeating tiles made from a conventional conductor, with the resonance tuned mechanically. This also avoids a substantial materials-development step: the 2--20\,mm quantum-well stacks proposed for SQWARE are far thicker than the approximately 0.01\,mm active quantum-well multilayer cited there, requiring extended epitaxial growth or wafer bonding while preserving material quality~\cite{Mehrani:2025ryc}. Our converter instead requires 8--15 free-standing metal grids per tile, with challenges in their surface losses, flatness and coordinated motion. For dark photons, it needs no magnetic field at all. Below we explain how the stack converts and radiates and why it has an optimal thickness, describe five tunable designs that cover 0.25--8\,meV, compute how much of the signal a finite tile delivers to a detector, and derive the reach for axions (Fig.~\ref{fig:reach}) and, without a magnet, for dark photons (Fig.~\ref{fig:dp}). The relation to earlier proposals and the role of the readout architecture are discussed in End Matter B.
+
+
+\textit{Mechanism.}---A grid of thin wires of radius $r$ and pitch $a$ is, for fields along the wires, a sheet of impedance $Z_g=R_g-i\omega L_g$, with $L_g=(a/2\pi)\ell$, $\ell=\ln(a/2\pi r)$~\cite{Marcuvitz:1951,Belov:2003}, and $R_g=r_sa/(2\pi r)$ from the wire resistance. Here impedances are normalized to the vacuum impedance $Z_{\rm vac}\simeq376.73\,\Omega$, and $r_s=R_s/Z_{\rm vac}$ is the dimensionless surface resistance corresponding to the physical value $R_s$ quoted below. A stack of grids at spacing $d$ therefore behaves as a Drude medium~\cite{Pendry:1996} (see the End Matter), with
+\begin{equation}
+\varepsilon=1-\frac{\omega_p^2}{\omega(\omega+i\Gamma)},\qquad \omega_p^2=\frac{2\pi}{ad\,\ell},\qquad \Gamma=\frac{r_s}{r\ell},
+\label{eq:plasma}
+\end{equation}
+and a material quality factor $\Qm=\omega_p/\Gamma$,
+which coincides with the unloaded quality factor in the
+bulk limit when wire resistance dominates the losses. Below $\omega_p$ the medium reflects like a metal, above it transmits like a dielectric, and near $\omega_p$ its permittivity is close to zero. The plasma frequency depends only on the lattice, through $ad$ and $\ell$, and not on the size of the stack, so changing the spacing $d$ tunes it. The losses enter through $\Gamma$, which is small for thick wires of a good conductor. In cold, pure copper the electron mean free path far exceeds the classical skin depth, so we use the extreme anomalous skin-effect limit, in which the surface resistance is independent of the dc resistivity and grows as $\nu^{2/3}$~\cite{ReuterSondheimer:1948,Chambers:1952}. We extrapolate the copper benchmark $R_s=2.9\,{\rm m}\Omega$, calculated at 3.9\,GHz, 4.2\,K and 6\,T~\cite{Posen:2022tbs,Calatroni:2020ase}, with this law and multiply it by 1.8 as an allowance for additional roughness and magnetoresistance losses at 10\,T, giving $R_s=83.6\,{\rm m}\Omega\,(\nu/250\,{\rm GHz})^{2/3}$.
+
+Why does such a medium enhance the signal? Inside a homogeneous medium of permittivity $\varepsilon$, the
+spatially uniform axion-driven field is $-E_0/\varepsilon$ rather than its vacuum value $-E_0$ (End Matter A). Near $\varepsilon=0$, this response is enhanced, but the signal must escape the medium to be detected. We characterize the emitted radiation by the amplitude boost factor $\beta$, defined as the outgoing electric-field amplitude divided by $E_0$, the amplitude emitted by a bare mirror. The corresponding power enhancement is $|\beta|^2$. For a slab of thickness $L$ backed by a mirror, the lossless limit $\varepsilon=\operatorname{Re}\varepsilon
+\equiv u$, with $0<u\ll1$ corresponding to a frequency
+slightly above the plasma frequency, admits a resonance when the slab spans half an internal wavelength, $L=\lambda/(2\sqrt{u})$, where $\lambda$ is the vacuum wavelength. At this resonance, $\beta=-2/u$ and the enhanced response inside the slab produces an enhanced outgoing wave. Including the leading effect of absorption, $\varepsilon\simeq u+i/\Qm$, gives the resonant power boost \footnote{This result agrees with the small-permittivity,
+weak-loss limit of the mirror-backed slab response of Ref.~\cite{Mehrani:2025ryc}, after accounting
+for the polarization projection used there.}
+\begin{equation}
+|\beta|^2\simeq
+\frac{4}{[u+\pi/(2\Qm\sqrt{u})]^2}.
+\label{eq:betamax}
+\end{equation}
+The two terms in the denominator of Eq.~\eqref{eq:betamax} are proportional to the two rates at which the stored energy decays. In particular, $u$ is proportional to the radiative rate $\gamma_{\rm rad}$, at which energy leaves through the slab face as the signal, and $\pi/(2\Qm\sqrt u)$ is proportional to the ohmic rate $\gamma_{\rm ohm}\simeq\Gamma$, at which it is absorbed in the wires. The boost is therefore inversely proportional to the total damping, as for a driven oscillator, and the ratio of the two terms is $x\equiv\gamma_{\rm rad}/\gamma_{\rm ohm}=2\Qm u^{3/2}/\pi$ (End Matter A). A thicker slab (smaller $u$) enhances the field more but releases it more slowly, so $x$ decreases and more of the field is lost. The peak boost is largest, $|\beta|^2_{\max}\simeq0.61\,\Qm^{4/3}$, at $x=1/2$, i.e., when the radiative rate is half the ohmic one. For a background-dominated search, the thickness should optimize sensitivity across a frequency interval. We therefore choose the number of grids to maximize $\mathcal I=\int|\beta(\nu)|^4\,\dd\nu/\nu$, which accounts for both the signal enhancement and its bandwidth (see the End Matter).
+
+The homogeneous-slab description explains the enhancement mechanism and the balance between radiation and absorption. Its derivation assumes a small phase advance between successive grids, $kd\ll1$, where $k=\omega=2\pi/\lambda$. In the designs considered below, however, $kd\simeq1.35$--2.1, so the grids are separated by roughly a quarter of a vacuum wavelength, and propagation across each gap must be treated explicitly. We therefore obtain the design parameters and boost curves by solving the electromagnetic boundary conditions for $N$ separate impedance sheets in front of the mirror. Each sheet has the impedance $Z_g$ introduced above, and the calculation retains the phase accumulated between grids and their multiple reflections. To test the approximation of each grid by a uniform sheet, we also solve Maxwell's equations for an array of individual circular copper wires, including their electromagnetic coupling within and between grids. This more detailed calculation slightly shifts the resonance frequency, which we compensate by adjusting the grid spacing. Numerical methods and comparisons are described in the Supplemental Material (SM)~\cite{SM}.
+
+\textit{Designs.}---For geometrically similar lattices, increasing the target axion mass requires smaller wire radii and spacings. At fixed $r/a$ and $d/a$, Eq.~\eqref{eq:plasma} gives $a\propto m_a^{-1}$. Together with the assumed copper surface resistance $R_s\propto\nu^{2/3}$, this implies $\Qm\propto m_a^{-2/3}$. The optimal slab thickness scales as $L_{\rm opt}\propto\lambda\Qm^{1/3}$, so the preferred number of grids, $N=L/d$, decreases slowly with mass, $N_{\rm opt}\propto\Qm^{1/3}$. These relations guide the choice of dimensions, with the final designs obtained from the discrete-grid calculation. To characterize the bandwidth of each design, we also define the response quality factor $\Qr=\nu_{\rm res}/\Delta\nu_{\rm FWHM}$, where $\nu_{\rm res}$ is the resonant frequency and $\Delta\nu_{\rm FWHM}$ is the full width at half maximum of the power response $|\beta(\nu)|^2$. Unlike the material quality factor $\Qm$, which characterizes dissipation in the wire medium, $\Qr$ describes the resonance of the complete stack and includes both radiation escaping through its open face and absorption in the wires. A larger $\Qr$ therefore corresponds to a narrower resonance.
+
+Table~\ref{tab:design} lists five tunable grid stacks, or cartridges, covering successive factor-of-two intervals in axion mass. Each cartridge has a fixed wire geometry and number of grids and is tuned by varying their separation. To select the grid number, we compare designs with $N$ between 3 and 26, keeping the resonance at the center of each mass band. Figure~\ref{fig:tuning}(a) compares the normalized peak boost and scan response as functions of $x$. For $x>1$, radiation is the dominant escape channel, but for $x<1$, most of the energy is absorbed in the wires. Expressed in terms of this ratio, the numerical results for the five cartridges approximately follow the same curves predicted by the slab model.
+
+Within each cartridge, the wire radius $r$, pitch $a$, and number of grids $N$ remain fixed. We tune the resonance by changing the common separation $d$ between successive grids, including the gap between the mirror and the first grid; compressing the stack raises the resonant frequency. The discrete-sheet calculation shows that covering each assigned interval requires reducing $d/a$ from approximately 1.69 to 0.57. Figure~\ref{fig:tuning}(b) shows the peak power boost at each tuning setting, with its maximum and minimum differing by only a factor of 1.3--1.5 within each cartridge in the sheet model. The plotted endpoints mark the assigned search intervals, rather than intrinsic limits of the tuning range.
+
+Tuning the stack requires coordinated motion that changes all gaps by the same amount while preserving the flatness and parallelism of the grids. In other words, once a setting is reached, the geometry must remain stable so that the resonance stays at the desired frequency throughout the measurement. Polarization modulators designed for cryogenic operation provide a useful precedent for such precision mechanics: they vary the separation between a wire grid and a mirror and use capacitive sensors with quoted precision better than $0.5\,\mu{\rm m}$~\cite{Chuss:2014piper}. Even when the average separations are correct, sagging or tilting of the grids makes the gaps vary across the aperture, shifting the local resonance and causing different regions to emit with different phases. Their fields then add less constructively in the collected signal, reducing the sensitivity of the search. We quantify sensitivity to positioning errors using an idealized model of independent Gaussian displacements of each grid from its nominal plane, characterized by their root-mean-square (rms) amplitude. At the cartridge centers, rms deviations of approximately $6\,\mu{\rm m}$ in the 0.25--0.5 meV cartridge and $0.7\,\mu{\rm m}$ in the 4--8 meV cartridge increase the coupling required for detection by $5\%$ (SM~\cite{SM}). Grids of $12\,\mu{\rm m}$ tungsten wire at $30\,\mu{\rm m}$ pitch have been built with rms errors in spacing and flatness no larger than $5\,\mu{\rm m}$ over approximately $100\,{\rm mm}$ diameters~\cite{Nagler:2015xta}, demonstrating few-micrometer precision over a comparable aperture.
+
+\begin{figure*}[t]
+\includegraphics[width=0.92\textwidth]{fig2.pdf}
+\caption{Choosing the number of grids and tuning the five cartridges (colors as in Table~\ref{tab:design}). (a) Grid numbers $N=3$--26, with $d=a$ and lattice dimensions adjusted to keep the resonance at each geometric band center. The horizontal axis is the ratio of radiative to ohmic energy-decay rates, $x=\gamma_{\rm rad}/\gamma_{\rm ohm}$, extracted from the sheet calculation. Circles show $\mathcal I$ and squares the peak power boost, each normalized to its maximum within that band. Solid and dashed curves are the normalized slab predictions, with maxima at $x=4/5$ and $1/2$, respectively. Stars mark the selected designs. (b) Peak power boost as each cartridge is tuned by varying $d$ at fixed $a$, $r$, and $N$ (labels). Lines give the sheet prediction; open circles show the circular-wire calculation. The endpoints delimit the assigned search intervals, not physical tuning limits.}
+\label{fig:tuning}
+\end{figure*}
+
+\begin{table}[t]
+\caption{Benchmark cartridges for five successive mass intervals. The wire pitch $a$, wire diameter $2r$, and grid number $N$ remain fixed within each cartridge. The thickness $L$, material quality factor $\Qm$, response quality factor $\Qr$, and peak power boost $|\beta_{\rm pk}|^2$ are evaluated at the geometric center of each interval, where $d=a$ and $L=Nd$. The grid number maximizes the scan response $\mathcal I$ among the sampled designs. We use $r=0.03 a$ except in the 4--8\,meV cartridge, where continuing this scaling would require wires approximately $3.6\,\mu{\rm m}$ in diameter. We instead choose $2r=5\,\mu{\rm m}$, motivated by the fabrication of free-standing tungsten grids with this wire diameter~\cite{Ade:1979,Mok:1979}, and adjust the pitch to maintain the target resonance.}
+\label{tab:design}
+\begin{ruledtabular}
+\begin{tabular}{lcccccc}
+Band [meV] & $N$ & $a$ [$\mu$m] & $2r$ [$\mu$m] & $L$ [mm] & $\Qm$ & $\Qr$\,/\,$|\beta_{\rm pk}|^2$\\
+\hline
+0.25--0.5 & 15 & 946 & 56.7 & 14.2 & 895 & 585\,/\,5530\\
+0.5--1 & 13 & 474 & 28.4 & 6.16 & 564 & 379\,/\,3040\\
+1--2 & 11 & 238 & 14.3 & 2.61 & 355 & 239\,/\,1650\\
+2--4 & 9 & 120 & 7.17 & 1.08 & 224 & 146\,/\,883\\
+4--8 & 8 & 63.7 & 5.00 & 0.510 & 169 & 123\,/\,641
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\textit{Collection.}---The preceding calculation treats the grids as infinite in their plane, while retaining the finite thickness of the stack. To determine the power reaching a receiver, we instead consider a square tile of side $W$, with the wires along $y$ and the direction normal to the grids along $z$. Each tile is viewed through optics that couple to a single Gaussian spatial mode, with waist radius $w\simeq W/2$, defined by a reduction of the field amplitude to $1/e$ of its central value. The received power depends on how well the emitted field matches this mode in amplitude and phase, rather than simply on the total radiated power, as also found in three-dimensional studies of dielectric haloscopes~\cite{MADMAX:2021lxf}. We calculate this overlap using a model that resolves the individual wires across the tile and the finite mirror, with a paraxial treatment along the wires. At the tested settings, $74$--$78\%$ of the periodic-model power reaches the Gaussian mode; an independent mode-matching calculation gives a comparable bandwidth-weighted collection factor of $0.72$--$0.78$. We adopt $\eta_{\rm ap}=0.65$ in the forecasts, allowing some margin below these calculated values. The sampled geometries and the limitations of these calculations are described in the SM~\cite{SM}.
+
+Axion motion introduces a further reduction because the axion field is not exactly uniform in phase across the tile. A velocity component parallel to its face produces a phase gradient in the driving current and therefore slightly tilts the emitted beam, reducing its overlap with the fixed receiver mode. We include this effect through a factor $\xi$, defined as the halo-averaged collected power relative to the zero-velocity result. To limit dephasing, we use 10\,cm tiles up to 4\,meV and 5\,cm tiles at higher masses, giving $\xi\simeq0.8$--$1$ across the search range for the adopted halo model~\cite{SM}.
+
+\textit{Sensitivity.}---Each tile feeds its own detector, with signal power
+\begin{equation}
+P_s=\eta_d\eta_{\rm ap}\xi|\beta|^2P_{\rm dish},
+\end{equation}
+where $P_{\rm dish}$ is the power from a bare mirror of the same area. The efficiency $\eta_d$ is the product of the transmission through the receiving optics and the detector efficiency, after the collection losses already included in $\eta_{\rm ap}$ and $\xi$. We adopt $\eta_d=0.5$ as a requirement on this combined chain. For photon counting this means half of the photons entering the collected spatial mode must produce registered events.
+
+Our reference array has an active area $A=1\,{\rm m^2}$ at $0.1\,{\rm K}$ in a field $B_0=10\,{\rm T}$, a magnet benchmark motivated by the BREAD and MADMAX concepts~\cite{BREAD:2021tpx,MADMAX:2019pub}. We allocate $T_{\rm oct}=1\,{\rm yr}$ of live observing time to each factor-of-two interval in mass, shared among tuning settings uniformly in logarithmic frequency. The five-octave search therefore requires five live years, excluding tuning and calibration overheads. Sensitivities combine all tiles and settings at a local signal-to-noise ratio of five (End Matter B).
+
+We consider three readouts. Heterodyne receivers resolve the axion spectral line, and we assign them a noise power spectral density $N_{\rm sys}=10\omega$ up to $4\,{\rm meV}$ ($0.97\,{\rm THz}$), an approximate single-sideband benchmark motivated by ALMA receiver performance~\cite{Uzawa:2021,Kerr:2014alma,Baryshev:2015alma}, with an effective signal linewidth $\Delta\nu_a=10^{-6}\nu$. For kinetic-inductance detectors (KIDs), used as power detectors, we adopt a one-sided, absorbed-power-referred noise-equivalent power ${\rm NEP}=3\times10^{-19}\,{\rm W/\sqrt{Hz}}$ per channel, motivated by kilo-pixel measurements near $0.85\,{\rm THz}$ and detector development for $1.4$--$2.8\,{\rm THz}$~\cite{Baselmans:2017kid,Bueno:2018kid}. These demonstrations overlap the upper search band; maintaining the same noise toward lower frequencies is a development target requiring adapted optical coupling and, below the aluminium pair-breaking threshold of approximately $0.39\,{\rm meV}$, a lower-gap absorber. For photon counters, we assume a total dark-count rate of $0.4\,{\rm s^{-1}}$ together with the combined efficiency defined above. The 100 channels associated with $10\,{\rm cm}$ tiles must then each achieve $D_{\rm dark}=4\,{\rm mHz}$; above $4\,{\rm meV}$, the 400 channels associated with $5\,{\rm cm}$ tiles require $1\,{\rm mHz}$ each to retain the same total background. The counting forecasts assume stationary Poisson backgrounds with known mean rates and cold, filtered receiving optics that keep thermal photons below the quoted dark background.
+
+Figure~\ref{fig:reach} shows that heterodyne receivers reach below the globular-cluster and CAST bounds up to approximately $1.0\,{\rm meV}$, while KIDs extend these crossings to $1.6$ and $1.9\,{\rm meV}$, respectively. At fixed tile size and detector performance, $g_{\min}\propto B_0^{-1}(A T_{\rm oct})^{-1/4}$; the thin, faint curves retain the 10\,m$^2$ forecast, which improves the coupling reach by $10^{1/4}\simeq1.8$ for the same exposure. The assumed counters reach the DFSZ-I benchmark over approximately $0.8$--$0.9\,{\rm meV}$ and the KSVZ benchmark over $0.8$--$2.6\,{\rm meV}$, with the lower endpoint set by their assumed frequency coverage. Doubling the copper surface resistance lowers the upper KSVZ crossing to approximately $2.0\,{\rm meV}$ and removes the DFSZ-I reach within that coverage. The upper end of the scan, 8\,meV, is a choice of scope rather than an intrinsic limit of the radiative mechanism: there the assumed counters remain about eight times below the CAST bound, and higher masses would require further design and validation of the wire geometry, mechanical tolerances and THz losses.
+
+The QCD reach specifies a detector-development target whose ingredients have been demonstrated separately. Quantum-capacitance devices have counted $1.5\,{\rm THz}$ photons~\cite{Echternach:2017vtf} and been fabricated in 441-pixel arrays~\cite{Echternach:2021}, while quantum-dot counters have reached $1\,{\rm mHz}$ at $70\,{\rm mK}$; efficiencies for coupling from vacuum have been estimated at $0.1$--$1\%$~\cite{Komiyama:2000,Ikushima:2010}. Combining efficient detection and millihertz backgrounds across $0.2$--$2\,{\rm THz}$ remains the required advance; efficient detection with millihertz or lower backgrounds is also assumed in the more ambitious SQWARE benchmarks~\cite{Mehrani:2025ryc}.
+
+The QCD reach depends on the detector performance. To give an idea of how things scale, let us consider an array of $10\,{\rm cm}$ tiles at $m_a=1\,{\rm meV}$, holding the converter response, collection factors and halo density fixed. In this case the background-dominated counter forecast gives
+\begin{equation}
+\begin{aligned}
+g_{\min}\simeq{}&
+1.83\times10^{-13}\,{\rm GeV^{-1}}
+\left(\frac{10\,{\rm T}}{B_0}\right)
+\left(\frac{0.5}{\eta_d}\right)^{1/2}
+\\
+&\times
+\left(\frac{D_{\rm dark}}{4\,{\rm mHz}}\right)^{1/4}
+\left(\frac{1\,{\rm m^2}}{A}\right)^{1/4}
+\left(\frac{1\,{\rm yr}}{T_{\rm oct}}\right)^{1/4}.
+\end{aligned}
+\label{eq:counter_scaling}
+\end{equation}
+
+We notice that we stop at 8 meV because a further octave would require wires thinner than the 5 $\mu$m free-standing grids already demonstrated, or thick-wire lattices outside the sheet model, together with sub-micrometer flatness.
+
+\begin{figure}[t]
+\includegraphics[width=\columnwidth]{fig_axion_1m2.png}
+\caption{Axion reach (local SNR\,$=5$) of a 1\,m$^2$ array in 10\,T, one live year per octave (thick curves). Thin, faint curves show 10\,m$^2$ with the same per-channel detector performance and exposure. Colored bands show the effect of doubling $R_s$ for 1\,m$^2$; dashed lines extrapolate the assumed counter performance below 190\,GHz. We also show CAST~\cite{CAST:2024eil} limits (shaded gray region), as well as globular clusters~\cite{Dolan:2022kul} (dashed gray) and  NuSTAR~\cite{Ruz:2024gkl} (dotted gray). The gold band indicates the QCD axion band.}
+\label{fig:reach}
+\end{figure}
+
+\begin{figure}[t]
+\includegraphics[width=\columnwidth]{fig_dp_1m2.png}
+\caption{Dark-photon reach of the same 1\,m$^2$ array without a magnet, random polarization (thick curves); thin, faint curves: 10\,m$^2$; colored bands: $R_s$ doubled for 1\,m$^2$; dashed: counters assumed below 190\,GHz; dash-dotted: one tile, one KID, a month per octave. Existing limits from direct searches~\cite{Ourahou:2026dandelion,Wei:2025ddp,Fan:2022uwu} and from solar and stellar emission~\cite{Caputo:2021eaa} are omitted. BREAD (one KID/TES, 1000\,d)~\cite{BREAD:2021tpx} and SQWARE~\cite{Mehrani:2025ryc} are shown with their published assumptions; their exposures, detectors and statistical conventions differ from ours. SQWARE 1--3 denote the HM, LM and LM-S configurations, respectively.}
+\label{fig:dp}
+\end{figure}
+
+\textit{Dark photons.}---The same converter can search for dark-photon DM without an applied magnetic field. A dark photon of mass $m_X$ and dimensionless kinetic mixing $\chi$~\cite{Holdom:1985ag} drives ordinary electric currents through an effective source $\mathbf J_X=\chi m_X^2\mathbf X$. For local density $\rho_X$, its driving-field amplitude along the wires is $\chi\sqrt{2\rho_X}\cos\theta$, where $\theta$ is the angle between the dark-photon polarization and the wires~\cite{Gelmini:2020kcu,Caputo:2021eaa}. Replacing the axion amplitude $\gagg a_0B_0$ by this expression gives the same resonant response. Assuming the same local density, halo distribution, detector performance and material losses, the axion coupling reach $g_{\min}$ at $m_a=m_X$ therefore maps to
+\begin{equation}
+\begin{aligned}
+\chi_{\min}\simeq{}&
+3.38\times10^{-15}
+\left(\frac{g_{\min}}{10^{-12}\,{\rm GeV^{-1}}}\right)
+\left(\frac{B_{\rm ref}}{10\,{\rm T}}\right)
+\\
+&\times
+\left(\frac{1\,{\rm meV}}{m_X}\right)
+\left(\frac{1/3}{\kappa}\right)^{1/2},
+\end{aligned}
+\label{eq:dpmap}
+\end{equation}
+where $B_{\rm ref}$ is the field used in the axion forecast and $\kappa=\langle\cos^2\theta\rangle=1/3$ for isotropically randomized polarization. A fixed polarization produces daily modulation as the wires rotate with the Earth, making the sensitivity depend on the detector orientation and observing schedule~\cite{Caputo:2021eaa}; our benchmark assumes randomized polarization. Figure~\ref{fig:dp} gives $\chi_{\min}\simeq9\times10^{-14}$ with KIDs and $(6$--$7)\times10^{-16}$ with the assumed counters near $1\,{\rm meV}$. For comparison, Dandelion constrains $\chi<8.7\times10^{-10}$ over approximately $0.6$--$1.4\,{\rm meV}$~\cite{Ourahou:2026dandelion}, while stronger limits of order $10^{-11}$ have been obtained in narrow intervals near $0.39$ and $0.61\,{\rm meV}$~\cite{Wei:2025ddp,Fan:2022uwu}.
+
+%\textit{Outlook.}---Compared with SQWARE, the use of repeated metal grids avoids thick epitaxial heterostructures and provides a much larger conversion area at a lower field. The axion search still requires a dedicated 10\,T apparatus with optical access at 0.1\,K, and photon counters combining efficient detection with millihertz backgrounds. Without a magnet, the same array can search for dark photons in unexplored parameter space. Measurements of the in-field surface impedance, tuning and optical collection remain essential to establish the projected performance.
+
+\begin{acknowledgments}
+AC is supported by an ERC STG grant (``AstroDarkLS'', grant No. 101117510). AC acknowledges hospitality by the Institute for Advanced Study supported by an anonymous donor.
+\end{acknowledgments}
+
+\bibliographystyle{apsrev4-2}
+\bibliography{refs_v39}
+%=====================================================================
+\clearpage
+\onecolumngrid
+\begin{center}{\large\bfseries End Matter}\end{center}
+\twocolumngrid
+\setcounter{equation}{0}
+\renewcommand{\theequation}{A\arabic{equation}}
+\renewcommand{\theHequation}{A.\arabic{equation}}
+
+\section*{A. Resonant emission from the wire-grid slab}
+
+The effective-medium description follows by averaging the grid currents over their separation. A sheet carrying surface current $K=E_\parallel/Z_g$ gives a volume current density $J=E_\parallel/(dZ_g)$, where $E_\parallel$ is the electric field along the wires. The stack therefore has an effective conductivity $1/(d  Z_g)$; substituting the resistive and inductive parts of $Z_g$ gives the Drude permittivity in Eq.~\eqref{eq:plasma}. Throughout this discussion, $\varepsilon$ denotes the permittivity along the wires, with the static field $\mathbf B_0$ parallel to them.
+
+For a spatially uniform axion source with time dependence $e^{-i\omega t}$, Amp\`ere's law becomes $-i\omega\varepsilon\mathbf E+\mathbf J_a=0$, where $\mathbf J_a=\gagg\dot a\,\mathbf B_0$. The particular solution is then $\mathbf E=-\gagg a\mathbf B_0/\varepsilon$: the material currents therefore modify the field needed to balance the axion source. This explains the enhancement near $\varepsilon=0$, but a uniform particular solution alone carries no outgoing radiation. The emitted wave must be obtained by imposing the boundary conditions on the driven field and the electromagnetic waves that accompany it.
+
+Let $s$ measure distance normal to a slab occupying $0<s<L$, with a perfect mirror at $s=0$. For the source confined to the slab, the fields along the wires can be written as
+\begin{equation}
+\begin{aligned}
+E_{\rm in}(s)&=\frac{E_0}{\varepsilon}\big[\cos(nks)-1\big]
+                +C\sin(nks),\\
+E_{\rm out}(s)&=\beta E_0e^{ik(s-L)},
+\end{aligned}
+\end{equation}
+where $n=\sqrt{\varepsilon}$, $k=\omega$, $E_0=\gagg a_0B_0$, and $C$ is a wave amplitude fixed by matching at the face. This form already enforces $E_{\rm in}(0)=0$. Since the permeability is the same on both sides, continuity of the tangential electric and magnetic fields requires $E_{\rm in}(L)=\beta E_0$ and $E'_{\rm in}(L)=ik\beta E_0$, where a prime denotes $\dd/\dd s$. Eliminating $C$ gives
+\begin{equation}
+\beta=\frac{1-\cos\phi}{\varepsilon\cos\phi-in\sin\phi},
+\qquad \phi=nkL.
+\label{eq:betaslab}
+\end{equation}
+Thus $|\beta|^2$ is the emitted power relative to a bare mirror of the same area. For a lossless medium with $\varepsilon=u>0$, the half-wave condition $\phi=\pi$ gives $L=\lambda/(2\sqrt{u})$ and $\beta=-2/u$, where $\lambda=2\pi/k$ is the vacuum wavelength.
+
+Absorption regularizes this enhancement. Slightly above the plasma frequency, write $\varepsilon\simeq u+i/\Qm$, with $\Qm=\omega_p/\Gamma$ and $\Qm^{-1}\ll u\ll1$. At the lossless half-wave condition, the phase becomes $\phi\simeq\pi+i\pi/(2u\Qm)$, so the dominant real part of the denominator in Eq.~\eqref{eq:betaslab} is $-[u+\pi/(2\Qm\sqrt{u})]$. Writing $x=\gamma_{\rm rad}/\gamma_{\rm ohm}$ for the ratio of radiative to ohmic energy-decay rates, the peak amplitude is
+\begin{equation}
+|\beta_{\rm pk}|\simeq\frac{2}{u+\pi/(2\Qm\sqrt{u})}
+=\frac{2}{u}\frac{x}{1+x},
+\label{eq:peakescape}
+\end{equation}
+Squaring this expression gives Eq.~\eqref{eq:betamax} in the main text.
+
+To identify these rates, let $U$ be the stored energy, which decays as $\dot U=-(\gamma_{\rm rad}+\gamma_{\rm ohm})U$ after the drive is removed. For the lossless Drude law, $nk=\sqrt{\omega^2-\omega_p^2}$, so the group velocity $v_g=[\dd(nk)/\dd\omega]^{-1}=\sqrt{u}$ becomes small near the plasma frequency. The power transmission through the face is then $\mathcal T=4\sqrt{u}/(1+\sqrt{u})^2\simeq4\sqrt{u}$. A wave encounters that face once per round trip of duration $2L/v_g$, giving $\gamma_{\rm rad}\simeq\mathcal T v_g/(2L)=2\omega u^{3/2}/\pi$. Together with $\gamma_{\rm ohm}\simeq\Gamma$, this yields
+\begin{equation}
+x\equiv\frac{\gamma_{\rm rad}}{\gamma_{\rm ohm}}
+\simeq\frac{2\Qm u^{3/2}}{\pi},
+\qquad \Qr\simeq\frac{\Qm}{1+x}.
+\end{equation}
+Here $\Qr=\nu_{\rm res}/\Delta\nu_{\rm FWHM}$ describes the full width at half maximum of the power response; the corresponding angular-frequency width is $\gamma_{\rm rad}+\gamma_{\rm ohm}$. Equation~\eqref{eq:peakescape} therefore expresses the lossless enhancement multiplied by the fraction of stored energy that escapes. These slab relations are scaling guides. For the discrete stacks of Table~\ref{tab:design}, whose gaps are not small compared with the wavelength, the ohmic quality factor $Q_{\rm ohm}\equiv\omega/\gamma_{\rm ohm}$ differs from the material parameter $\Qm$. The calculated linewidths give $Q_{\rm ohm}\simeq(1.2$--$1.3)\,\Qm$, with $\Qr\simeq Q_{\rm ohm}/(1+x)$.
+
+A scan also benefits from the bandwidth of the enhancement. In the background-dominated regime the squared signal-to-noise ratio grows as the integration time times the squared signal power, and hence as $|\beta|^4$. Writing $\nu_r$ for the tuned resonance frequency, uniform exposure per logarithmic interval means $\dd t=(T_{\rm oct}/\ln2)\,\dd\ln\nu_r$, where $T_{\rm oct}$ is the live time per octave. Combining measurements as the resonance passes a fixed axion frequency gives a squared signal-to-noise ratio proportional to $\mathcal I=\int|\beta(\nu)|^4\,\dd\nu/\nu$, provided the detector noise and response shape vary slowly across the resonance. For a narrow Lorentzian,
+\begin{equation}
+\begin{aligned}
+|\beta(\nu)|^2&\simeq\frac{|\beta_{\rm pk}|^2}
+ {1+4\Qr^2[(\nu-\nu_{\rm res})/\nu_{\rm res}]^2},\\
+\mathcal I&\simeq\frac{\pi|\beta_{\rm pk}|^4}{4\Qr}
+\propto\frac{x^{4/3}}{(1+x)^3}.
+\end{aligned}
+\end{equation}
+This expression is maximal at $x=4/5$, and it is this scan optimum, rather than the largest boost alone, that guides the choice of the number of grids.
+
+For the actual stack, the vacuum gaps are not small compared with the wavelength, so the slab result is a scaling guide. In each gap we retain the driven field and both traveling waves, impose continuity of the electric field and the magnetic-field jump due to the sheet current, and apply the mirror and outgoing-wave conditions. Solving this linear system gives $\beta(\nu)$ and $\mathcal I$ without homogenization. Radiative and ohmic linewidths are separated by repeating the calculation with negligible resistance; the circular-wire checks and the correction for a source extending outside the stack are detailed in~\cite{SM}.
+
+
+\renewcommand{\theequation}{B\arabic{equation}}
+\renewcommand{\theHequation}{B.\arabic{equation}}
+\setcounter{equation}{0}
+\section*{B. Relation to other proposals}
+
+The tunable wire plasma introduced by Lawson \emph{et al.}~\cite{Lawson:2019brd} underlies the ALPHA program, which also considered operation without an enclosing cavity and readout through multiple antennas~\cite{ALPHA:2022rxj}. Mirror-backed dielectric multilayers are central to MADMAX and DALI~\cite{MADMAX:2019pub,DeMiguel:2026ncy}, while SQWARE uses a radiating quantum-well magnetoplasma~\cite{Mehrani:2025ryc}. Our proposal combines a wire plasma with radiative extraction in a mechanically tuned metallic structure over 0.06--1.9\,THz. The radiative ENZ mechanism is shared with SQWARE, our humble contribution is its implementation with wire grids, including the discrete electromagnetic response, balance between radiation and absorption, collection from finite tiles.
+
+Comparing these approaches requires the signal power delivered to each detector, its noise, and the observing time available at each mass. For independent power-detector measurements with white noise, the squared signal-to-noise ratio is
+\begin{equation}
+\mathrm{SNR}^2=2\sum_{i,j}
+\frac{t_i P_{s,ij}^{\,2}}{{\rm NEP}_j^{\,2}},
+\label{eq:comparison_snr}
+\end{equation}
+where $i$ labels tuning settings, $j$ labels detectors, $t_i$ is the live time at a setting, and $P_{s,ij}$ is the detected signal power. For background-dominated photon counting, the same expression applies upon replacing ${\rm NEP}_j^2$ by $2(2\pi\nu)^2D_j$, where $D_j$ is the background count rate. Dividing a fixed total signal equally among $N_{\rm det}$ independent detectors reduces $\mathrm{SNR}^2$ by $N_{\rm det}$ relative to collecting it onto one detector with the same noise and efficiency, if such collection is physically possible.
+
+For axions at fixed mass and density, the signal power scales as $\gagg^2 B_0^2 A\eta|\beta|^2$, where $\eta$ includes collection, transmission and detection efficiency. A scan must also account for the resonance bandwidth: a larger peak boost need not improve sensitivity if each mass is observed for a correspondingly shorter time. Uniform exposure per logarithmic frequency interval introduces the response integral $\mathcal I$ derived in End Matter A. For identical channels sharing total area $A$, at fixed noise per detector, the coupling reach therefore scales as
+\begin{equation}
+g_{\min}\propto
+\left[
+\frac{(\eta B_0^2A)^2\,T_{\rm oct}\mathcal I}
+{N_{\rm det}}
+\right]^{-1/4}.
+\end{equation}
+The same statistical argument applies to dark photons, whose signal instead scales with $\chi^2\kappa$, where $\kappa$ is the mean squared polarization projection, without the axion conversion factor $\gagg^2B_0^2$.
+
+SQWARE provides an instructive axion comparison because it uses the same radiative principle with a smaller area, a stronger resonance and a larger field. For its LM and LM-S configurations at tilt angles $72^\circ$ and $60^\circ$~\cite{Mehrani:2025ryc}, our evaluation of the open-slab responses places the resonances at 1.53 and 1.07\,meV, respectively, and gives $\mathcal I\simeq8.5\times10^3$ and $1.0\times10^5$, with full-field products $B_0^2A=1.17$ and $6.25\,{\rm T^2m^2}$; their boost factors already include the projection associated with tilting the sample. We assume unit collection from one emitting face of each SQWARE sample onto one detector, and retain the 100 detectors and aperture and halo losses of our 1\,m$^2$ array. With equal NEP and detector efficiency per channel, and equal time per logarithmic interval, our array reaches couplings approximately 2.4 times smaller than LM, whereas LM-S reaches couplings approximately 1.9 times smaller than our array. These are comparisons at two specified masses under common detector assumptions, rather than a ranking of the published sensitivity curves throughout their search bands.
+
+The required developments also differ. SQWARE must realize 2--20\,mm quantum-well structures with the assumed low THz damping and operate its benchmarks in 36--50\,T fields~\cite{Mehrani:2025ryc}. Repeated metal-grid tiles avoid this thick epitaxial structure and permit a much larger area at 10\,T, but require validation of the copper losses, grid tolerances and optical collection. For dark photons, mechanical tuning allows the grids to operate without a magnet; SQWARE still requires a field to tune its magnetoplasma resonance into its search band.
+
+A broadband dish has the advantage that every mass within the detector bandwidth is observed throughout the run. Its unboosted signal must therefore be compared using the full live time, rather than the shorter exposure available near each resonance in a scan. Collection remains important, as the angular spread caused by halo velocities can populate multiple spatial modes, approximately one at 1\,meV and 70 at 8\,meV for a 1\,m$^2$ aperture with our halo parameters. Reading these modes with separate detectors adds independent noise contributions, and collecting them with one multimode detector is advantageous only if its noise and efficiency remain favorable. %Figure~\ref{fig:dp} shows the published BREAD and SQWARE projections with their own exposures and detector assumptions~\cite{BREAD:2021tpx,Mehrani:2025ryc}.
+
+For ALPHA and related wire-plasma designs, the main distinction is how the signal is extracted. At high frequencies, attenuation limits the region that one localized antenna can collect efficiently. Additional antennas can recover signal from a larger volume, as discussed by ALPHA~\cite{ALPHA:2022rxj}, but their signals must then be transported to receivers or combined through a collection network. Our thin stack instead lets the signal escape through its face into external optics, avoiding propagation over large distances inside the wire medium. A quantitative comparison requires specified geometries and collection networks, including their usable conversion volumes, transmission losses and receiver noise at the same target frequency.
+%=====================================================================
+\clearpage
+\onecolumngrid
+\begin{center}{\large\bfseries Supplemental Material}\end{center}
+\twocolumngrid
+\setcounter{equation}{0}
+\setcounter{figure}{0}
+\renewcommand{\theequation}{S\arabic{equation}}
+\renewcommand{\theHequation}{S.\arabic{equation}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+
+\section*{S1. From the slab model to a stack of wires}
+
+The homogeneous-slab model explains the resonant enhancement and the competition between radiation and absorption, but the designs considered here have appreciable phase advance between successive grids. To calculate their response, we must therefore retain propagation through each gap and check whether a uniform impedance sheet adequately represents a grid of individual wires. We address these two approximations in turn.
+
+The effect of the grid separation can be seen already in an infinite periodic stack of lossless impedance sheets. Its transfer matrix over one period gives
+\begin{equation}
+\cos Kd=\cos kd+\frac{\pi d}{a\ell}\frac{\sin kd}{kd},
+\end{equation}
+where $K$ is the Bloch wave number, $k=\omega$ is the vacuum wave number, $d$ is the grid separation, and $a$ is the wire pitch. The geometric factor $\ell=\ln(a/2\pi r)$ depends on the wire radius $r$. In the long-wavelength limit, $kd\ll1$, the lowest band edge at $K=0$ approaches the plasma frequency in Eq.~\eqref{eq:plasma}. At our grid separations it instead lies 8--23\% below that value; for example, $d=a$ and $r/a=0.03$ give a band edge at $0.867\,\omega_p$. A finite stack resonates near this edge, where the Bloch phase accumulated per period is small even though the vacuum phase $kd$ is not. This is how the discrete lattice realizes the long internal wavelength of the ENZ slab.
+
+We next resolve the wires themselves to test the sheet approximation. In this calculation, the field scattered by each circular wire is expanded in cylindrical harmonics with $|n|\le3$, subject to the surface impedance $Z_s=r_s(1-i\sqrt3)$, with the same impedance normalization and surface resistance as in the main text. Lattice sums account for coupling within a grid, while propagating and evanescent diffraction orders couple different grids and their mirror images. Increasing the harmonic cutoff produces negligible changes at the most compressed setting, and an independent finite-difference calculation for a lossless three-grid stack agrees at subpercent accuracy.
+
+Resolving the wires shifts the resonance downward by 0.4--4.7\% at fixed geometry across the fifteen settings in Fig.~\ref{fig:tuning}(b), which we compensate by retuning the spacing. The retuned wire and sheet calculations then give $\sqrt{\mathcal I_{\rm wire}/\mathcal I_{\rm sheet}}=0.92$--1.05. Because the coupling reach scales as $\mathcal I^{-1/4}$, this changes the forecast by only about $-2\%$ to $+4\%$. We include this correction by interpolating between the sampled settings in $\log m_a$. These comparisons test the electromagnetic description for the assumed surface impedance; roughness, contacts and magnetic-field-dependent losses still require measurement.
+
+A separate check concerns the spatial extent of the driving field. The analytic slab response in Eq.~\eqref{eq:betaslab} confines the source to the stack, whereas a dark-photon source also acts in the surrounding vacuum. Extending a spatially uniform drive into the vacuum in front of the stack adds
+\begin{equation}
+\delta\beta=\tfrac12(1-r_L),
+\end{equation}
+where $r_L$ is the reflection amplitude referenced to the emitting face, with the same phase reference as $\beta$. For a passive stack, $|r_L|\le1$ and hence $|\delta\beta|\le1$, compared with resonant amplitudes $|\beta|\simeq25$--75. Recomputing the fifteen settings with this all-space drive in the one-dimensional model changes $\mathcal I$ by $-0.5\%$ to $-6\%$. The plotted dark-photon reach uses the common-response mapping; the one-dimensional calculation bounds the neglected source-extent correction at 1.6\% in coupling. It does not include conversion at the finite frames, mirror edges or external optics.
+
+\section*{S2. From an infinite lattice to a collected signal}
+
+To relate the infinite-lattice response to the signal received from a finite tile, we must account for both the tile edges and the overlap of the emitted field with the receiver mode. We first calculate the radiation from a separate validation geometry: a 13-grid stack resonant at 1.131\,meV, distinct from the benchmark cartridges in Table~\ref{tab:design}. In the plane transverse to the wires, each wire is represented by an outgoing cylindrical monopole satisfying the surface-impedance condition, and the finite mirror by piecewise-constant currents. The wires terminate on conducting frames, with variation along them treated in the paraxial approximation. This treatment along the wires is the main approximation of the finite-tile calculation; in the periodic limit, retaining only the monopole shifts the resonance by 0.3\% relative to the higher-harmonic calculation in S1.
+
+For a square tile of side 10\,cm, the calculated forward power is about 96\% of the corresponding periodic prediction. Collection into a single receiver mode produces a larger reduction: even a perfectly uniform square emitter couples only about 79\% of its power to an optimized Gaussian mode. Projecting the calculated finite-tile field onto that mode gives 76\% of the periodic-model power at 1.131\,meV, and 74--78\% at the additional settings tested near 0.8 and 1.6\,meV. Thus the difference between total emitted power and collected power is essential when using the periodic calculation to forecast sensitivity.
+
+We also check collection with an independent vector mode-matching calculation for impedance sheets in a flanged $10\times10$\,cm enclosure. Defining $\mathcal I_G$ as the scan integral formed from the response collected in the Gaussian mode, we find $\sqrt{\mathcal I_G/\mathcal I}=0.72$--0.78 over sampled settings at 0.5--4\,meV. This ratio is an effective power-collection efficiency: it equals $\eta$ if collection reduces the power by a frequency-independent factor $\eta$. We adopt $\eta_{\rm ap}=0.65$ to allow some margin below both calculations, which support the sampled geometries but do not establish a collection bound for every cartridge, particularly for the 5\,cm tiles above 4\,meV.
+
+Dark-matter motion introduces an additional phase variation across the aperture. For a nonrelativistic axion of mass $m_a$ and velocity $\mathbf v$, the driving wavevector is $\mathbf k_a=m_a\mathbf v$; its component parallel to the tile tilts the emitted beam relative to the fixed receiver mode. For a uniform zero-velocity aperture field and a receiver mode with real amplitude $u(\mathbf x)$ at transverse position $\mathbf x$, the resulting reduction in collected power is
+\begin{equation}
+\xi=\frac{\left\langle\left|\int u(\mathbf x)e^{i\mathbf k_a\cdot\mathbf x}\,\dd^2x\right|^2\right\rangle}
+{|\int u(\mathbf x)\,\dd^2x|^2},
+\label{eq:halo_overlap}
+\end{equation}
+where the integrals extend over the emitting aperture and the brackets denote an average over the halo velocity distribution. Extending the integrals to the full transverse plane for a Gaussian mode with field amplitude proportional to $e^{-|\mathbf x|^2/w^2}$ gives $\langle e^{-k_\perp^2w^2/2}\rangle$, where $k_\perp$ is the wavevector component in the tile plane and $w$ is the waist radius. The forecasts use this untruncated Gaussian approximation to evaluate $\xi$, separately from the finite-tile collection factor $\eta_{\rm ap}$.
+
+\begin{table}[b]
+\caption{Mechanical tolerances at the geometric centers of the five cartridges. The common-gap stability corresponds to a 10\% reduction in power at the intended operating frequency; the rms grid-displacement error corresponds to a 5\% increase in the minimum detectable coupling.}
+\label{tab:tolerances}
+\begin{ruledtabular}
+\begin{tabular}{lcc}
+Band [meV] & \shortstack{Gap stability\\{[$\mu$m]}} & \shortstack{rms grid error\\{[$\mu$m]}}\\
+\hline
+0.25--0.5 & 0.42 & 6.0\\
+0.5--1 & 0.33 & 3.8\\
+1--2 & 0.26 & 2.4\\
+2--4 & 0.21 & 1.4\\
+4--8 & 0.13 & 0.7\\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+The forecast assumes a Gaussian halo with one-dimensional velocity dispersion $220/\sqrt2$\,km/s and a 232\,km/s wind normal to the tile. This orientation minimizes the phase gradient associated with the mean wind. Placing the wind in the tile plane instead changes $\xi$ from 0.78 to 0.62 at 4\,meV for a 10\,cm tile, illustrating the orientation dependence at higher mass. The plotted reach therefore uses a favorable orientation; an experimental forecast should average the changing projection over the observing schedule.
+
+Mechanical precision enters in two different ways. A common change in all gaps, including the mirror-to-first-grid gap, tunes the resonance and must remain stable during a measurement. Errors in the relative positions of the grids can also distort the resonant field and reduce the collected signal. We separate these requirements in Table~\ref{tab:tolerances}. The common-gap tolerance limits the reduction in power at the intended operating frequency to 10\%, while the rms displacement tolerance limits the increase in the coupling required for detection to 5\%. The latter is obtained by averaging over 400 realizations of independent Gaussian displacements of each grid from its nominal plane. 
+
+\end{document}

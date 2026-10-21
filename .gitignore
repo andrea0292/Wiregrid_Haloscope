@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+.DS_Store
+code/validation/fdtd3d/raw/
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
+paper/*Notes.bib
+paper/main.pdf
+code/*_check.csv
+code/*_repro.*
+code/fw_reconcile*.json
+code/finite_tile/finite_tile_repro.json
+code/sqware_scan_cfg*.csv
+code/sqware_formula_check.csv

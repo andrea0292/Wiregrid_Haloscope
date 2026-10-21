@@ -1,0 +1,11 @@
+name: wiregrid
+channels: [conda-forge]
+dependencies:
+  - python=3.12
+  - numpy>=2.0
+  - scipy>=1.14
+  - pandas>=2.2
+  - matplotlib>=3.9
+  - mpmath
+  - numba>=0.60      # 3D FDTD only
+  - pillow
