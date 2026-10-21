@@ -12,7 +12,7 @@ FDTD check (~35 min per cartridge on 10 cores).
 ## Layout
 
 ```
-paper/        main.tex (BibTeX: refs_v39.bib, style apsrev4-2) and the four figures it includes
+paper/        main.tex (current Letter + End Matter + SM; BibTeX file refs_v14.bib) and the figures it includes
 code/         solvers, figure scripts and checks (run scripts from code/ unless stated otherwise)
   reproduce_final.py      impedance-sheet solver, tuning trajectories, halo factor chi_their(), reach formula
   make_reach_tables.py    END-TO-END driver: five cartridges + wire correction + halo + detectors -> reach tables of Fig. 3
