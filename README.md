@@ -1,7 +1,7 @@
 # A radiative wire-grid plasma haloscope for millielectronvolt axion and dark-photon dark matter
 
 Code, data and paper source for the Letter *"A Radiative Wire-Grid Plasma Haloscope for Millielectronvolt Axion
-and Dark-Photon Dark Matter"* (A. Caputo et al.). The haloscope is built from mirror-backed stacks of free-standing copper wire
+and Dark-Photon Dark Matter"* (A. Caputo). The haloscope is built from mirror-backed stacks of free-standing copper wire
 grids, with wires parallel to B0. Each stack acts as an epsilon-near-zero slab that radiates through its face into
 external optics. Five octave cartridges cover 0.25–8 meV. The reference array is 1 m² at 10 T, with a 0.1 K converter
 and one live year per octave.
