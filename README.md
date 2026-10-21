@@ -89,8 +89,9 @@ To compile the paper: `cd paper && pdflatex main && bibtex main && pdflatex main
 - **Figures:** Figs. 2–4 and the slab figure regenerate pixel-identically from the CSVs in `data/`.
 - **Reach tables (Fig. 3):** `make_reach_tables.py` rebuilds them from scratch (designs, tuning, sheet response, circular-wire
   correction, halo factor, detectors). It reproduces the stored `data/reach_0p25_8_fw*.csv` to ≤ 0.4 % for counters and KIDs
-  and ≤ 1 % for heterodyne at every mass except the single grid point m = 4.000 meV (the cartridge junction), where the stored
-  KID and heterodyne values lie between the two one-cartridge values (25 % off). The stored tables let only one cartridge
+  at every mass except the single grid point m = 4.000 meV (the cartridge junction), where the stored KID and heterodyne values
+  lie between the two one-cartridge values (25 % off). The heterodyne column agrees to ≤ 1 % below 4 meV (where it is plotted);
+  just above the junction it deviates by up to 1.1 % (R_s × 1) and 4.5 % (R_s × 2) at m = 4.046 meV, outside the plotted range. The stored tables let only one cartridge
   contribute on each side of 4 meV; `--overlap-at-4` lets both contribute, as at the other junctions, and lowers g by up to
   16–30 % at the three grid points nearest 4 meV.
 - **Dark photon (Fig. 4):** `dark_photon/dp_tools.py` reproduces `data/dp_reach.csv` to 3e-5 from the axion tables.
