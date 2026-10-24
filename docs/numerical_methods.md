@@ -41,6 +41,8 @@ geometric band centre. Tuning is done by changing d at fixed a, r, N, along a tr
   S2 (Gaussian mode, w = W/2).
 
 `reach_from()` implements this. Tiles add incoherently, so g ∝ (A a_t T)^{−1/4} at a fixed background per detector.
+The stored tables are for 10 m² with counters at 4 mHz per 10 cm tile (1 mHz per 5 cm tile above 4 meV); the Letter's
+1 m², D = 1 mHz benchmark follows by the factors 10^{1/4} and, for counters below 4 meV, (1/4)^{1/4} (README, "Benchmark scaling").
 
 ## 2. Circular-wire full-wave model (`code/fullwave.py`, `code/fw_reconcile*.py`)
 
@@ -140,7 +142,7 @@ Linear extrapolation in Δx agrees with the multipole solver to ~1e-6 in frequen
 An independent package (see its README.txt and MODEL.txt): vector mode matching for N impedance sheets in a finite
 W × H aperture of an infinite PEC flange, with PEC back, side and end walls (so the wires terminate on conducting walls),
 exterior admittance from Galerkin scalar-Green integrals. It gives the bandwidth-weighted collection √(𝓘_G/𝓘) = 0.72–0.78 quoted
-in S2, and the distributed-port comparison of End Matter B. `volcheck2.py` (equal-volume comparison) runs from that directory.
+in S2, and a distributed-port comparison (supporting study, not quoted in the current Letter). `volcheck2.py` (equal-volume comparison) runs from that directory.
 Run: `cd code/finite_collection && python reproduce_all.py` (results are cached in `results/`).
 
 ## 8. Halo factor ξ (`reproduce_final.chi_their`)
@@ -153,8 +155,9 @@ With the wind normal to the tile the same calculation gives 0.99, 0.98, 0.88, 0.
 ⟨exp(−k⊥²w²/2)⟩ is lower (0.78 at 4 meV with the wind normal, 0.62 with the wind in plane) because truncation at the tile edge
 narrows the aperture.
 
-## 9. Overlap form of the boost (`code/validation/overlap_receiving_mode.py`, `overlap_modes_figure.py`)
+## 9. Overlap form of the boost (`code/validation/overlap_receiving_mode.py`, `overlap_modes_figure_im.py`)
 
 By reciprocity, β = (ik/2) ∫₀ᴸ E_rec(s) ds, where E_rec is the field set up by a unit plane wave incident from the detector side
 (SM S3). The script checks this against the direct solver (agreement 2×10⁻⁶ for all five cartridges) and draws the receiving
-mode for the stack modes m = 1, 2, 3 (KL ≈ mπ): only m = 1 adds coherently; even m are dark.
+mode for the stack modes m = 1, 2, 3 (KL ≈ mπ): only m = 1 adds coherently; even m are dark. `overlap_modes_figure_im.py`
+draws Fig. S1 of the Letter, with the imaginary parts (for m = 1, max|Im|/max|Re| = 0.12 and |∫E_rec|/∫|E_rec| = 0.99).

@@ -7,11 +7,14 @@ ROOT="$(cd "$(dirname "$0")" && pwd)"
 cd "$ROOT/code"
 python reproduce_final.py            # design_check.csv, reach_check.csv (sheet model)
 python make_reach_tables.py --compare   # data/reach_0p25_8_fw*_repro.csv vs stored tables
-python figures_reach_1m2.py          # paper/fig_axion_1m2.*, paper/fig_dp_1m2.*
+python fig_madgrid_context.py         # Fig. 3: paper/fig_axion_1m2_context*
+python fig_madgrid_dp_context.py      # Fig. 4: paper/fig_dp_1m2_context*
+python fig_madgrid.py                 # 0.25-8 meV variants: paper/fig_axion_1m2.*, paper/fig_dp_1m2.*
 python figures_tuning.py             # paper/fig2.*
 python figures_slab.py               # paper/fig5.*
 (cd dark_photon && python dp_tools.py)   # data/dp_reach_check.csv
-(cd validation && python gap_jitter.py && python overlap_receiving_mode.py && python overlap_modes_figure.py)
+(cd validation && python gap_jitter.py && python overlap_receiving_mode.py && python overlap_modes_figure.py \
+   && python overlap_modes_figure_im.py && python endmatter_checks.py)   # Fig. S1, End Matter numbers
 if [[ "${1:-}" == "--slow" ]]; then
   python nsweep_fig2_fig4.py                                     # nsweep.csv
   python flatness_mc.py                                          # flatness tolerances

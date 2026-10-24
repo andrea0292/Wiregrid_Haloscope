@@ -1,10 +1,12 @@
-# Layered wire-grid haloscope for millielectronvolt axions and dark photons
+# MADGRID: layered wire-grid haloscope for millielectronvolt axions and dark photons
 
 Code, data and paper source for the Letter *"Layered Wire-Grid Haloscope for Millielectronvolt Axions and Dark Photons"*
-(A. Caputo). The haloscope is built from mirror-backed stacks of free-standing copper wire
-grids, with wires parallel to B0. Each stack acts as an epsilon-near-zero slab that radiates through its face into
-external optics. Five octave cartridges cover 0.25–8 meV. The reference array is 1 m² at 10 T, with a 0.1 K converter
-and one live year per octave.
+(A. Caputo). MADGRID (**M**illielectronvolt **A**xions and **D**ark photons with layered **GRID**s) is built from
+mirror-backed stacks of free-standing copper wire grids, with wires parallel to B0, tuned by their spacing. Each stack acts
+as an epsilon-near-zero slab that radiates through its face into external optics. Five octave cartridges cover 0.25–8 meV.
+The reference array is 1 m² at 10 T, with a 0.1 K converter and one live year per octave. Detector benchmarks in the
+Letter: heterodyne N_sys = 10ħω (up to 4 meV), KIDs with NEP = 3×10⁻¹⁹ W/√Hz per channel, and photon counters with
+η_d = 0.5 and D_dark = 1 mHz per channel.
 
 Everything here runs on a laptop. The heaviest calculations are the finite-tile solver (~45 min, 4 GB) and the 3D
 FDTD check (~35 min per cartridge on 10 cores).
@@ -12,21 +14,26 @@ FDTD check (~35 min per cartridge on 10 cores).
 ## Layout
 
 ```
-paper/        main.tex (current Letter + End Matter + SM; BibTeX file refs_v14.bib) and the figures it includes
+paper/        main.tex (current Letter + End Matter + SM; BibTeX file bib.bib) and the figures it includes:
+                fig1.pdf, fig2.pdf, fig_axion_1m2_context.png (Fig. 3), fig_dp_1m2_context_proj.png (Fig. 4),
+                fig_overlap_modes.png (Fig. S1); other figure files there are variants not included in the Letter
 code/         solvers, figure scripts and checks (run scripts from code/ unless stated otherwise)
   reproduce_final.py      impedance-sheet solver, tuning trajectories, halo factor chi_their(), reach formula
   make_reach_tables.py    END-TO-END driver: five cartridges + wire correction + halo + detectors -> reach tables of Fig. 3
   nsweep_fig2_fig4.py     optimal number of grids (Fig. 2a data: data/nsweep.csv)
   figures_tuning.py       Fig. 2 (paper/fig2.pdf) from data/nsweep.csv and data/fig2b_tuning_paths.csv
-  figures_reach_1m2.py    Fig. 3 axion reach and Fig. 4 dark-photon reach (paper/fig_axion_1m2.*, fig_dp_1m2.*)
-  figures_reach.py        same figures with 10 m² as the reference (earlier version, kept for comparison)
+  fig_madgrid_context.py  Fig. 3: axion reach over existing bounds, 0.01–20 meV (paper/fig_axion_1m2_context*.png|pdf)
+  fig_madgrid_dp_context.py  Fig. 4: dark-photon reach over existing bounds (paper/fig_dp_1m2_context_proj.* is the Letter's)
+  fig_madgrid.py          the same curves on a 0.25–8 meV frame (paper/fig_axion_1m2.*, fig_dp_1m2.*; not in the Letter)
+  figures_reach_1m2.py    superseded 1 m² figures with the earlier counter benchmark (4 mHz per 10 cm tile)
+  figures_reach.py        superseded figures with 10 m² as the reference (shared plotting helpers still imported)
   figures_slab.py         slab boost vs thickness (paper/fig5.*; not included in the current Letter)
   fullwave.py             circular-wire multipole + lattice-sum solver (S1)
   fw_reconcile.py         wire vs sheet comparison at the sampled settings, 0.25–4 meV (S1)
   fw_reconcile_4_8.py     same for the 4–8 meV cartridge
   flatness_mc.py          grid-flatness Monte Carlo (tolerance table)
   finite_tile/            wire-resolved finite tile: radiation, Gaussian collection, halo, tilts (S2)
-  comparator/             fixed-envelope port-coupled comparator model (End Matter B)
+  comparator/             fixed-envelope port-coupled comparator model (supporting study; not quoted in the current Letter)
   finite_collection/      independent flanged-enclosure mode-matching solver (S2 collection 0.72-0.78) and distributed-port
                           comparison incl. volcheck2.py (equal-volume comparison); see its README.txt / MODEL.txt
   dark_photon/            dark-photon mapping, polarization Monte Carlo, prototype, BREAD normalization
@@ -35,9 +42,12 @@ code/         solvers, figure scripts and checks (run scripts from code/ unless 
   validation/
     run_fdfd_crosscheck.py + fdfd_check.py   independent finite-difference check of the multipole solver
     gap_jitter.py                             coupling penalty from random common-gap jitter
-    overlap_receiving_mode.py, overlap_modes_figure.py   boost as overlap with the receiving mode (SM S3, Fig. S1)
+    overlap_receiving_mode.py, overlap_modes_figure.py   boost as overlap with the receiving mode (SM S3)
+    overlap_modes_figure_im.py                 Fig. S1 of the Letter (real and imaginary parts of the receiving modes)
+    endmatter_checks.py                        Q_u and l_amp (Introduction), per-element boost and dish comparison (End Matter B)
     fdtd3d/                                   3D FDTD check of finite wire length and frame termination
 data/         every number quoted in the paper, as CSV; data/limits/ holds external limits and projections
+data/limits/axionlimits/  AxionLimits files used for the context figures (commit 7d375f4), with proj/, dp/ and dp/proj/
 data/fdtd3d/  reduced 3D FDTD results (spectra, aperture profiles, summary table)
 results/      figures from the validation runs that are not in the Letter
 notes/        literature tables, SQWARE and dark-photon cross-checks, reference check, mechanism drawing
@@ -51,11 +61,12 @@ conda env create -f environment.yml && conda activate wiregrid
 cd code
 python reproduce_final.py          # Table I designs + sheet-model reach              (~6 s)
 python make_reach_tables.py --compare   # full reach tables of Fig. 3, compared with data/ (~40 s)
-python figures_reach_1m2.py        # Figs. 3, 4 -> ../paper/fig_axion_1m2.*, fig_dp_1m2.*   (~1 s)
+python fig_madgrid_context.py      # Fig. 3 -> ../paper/fig_axion_1m2_context*.png|pdf  (~2 s)
+python fig_madgrid_dp_context.py   # Fig. 4 -> ../paper/fig_dp_1m2_context*.png|pdf     (~2 s)
 python figures_tuning.py           # Fig. 2 -> ../paper/fig2.*                         (~1 s)
-python figures_slab.py             # slab-boost figure -> ../paper/fig5.*             (~1 s)
+python figures_slab.py             # slab-boost figure -> ../paper/fig5.* (not in the Letter)  (~1 s)
 cd dark_photon && python dp_tools.py && cd ..   # dark-photon table -> ../../data/dp_reach_check.csv
-cd validation && python gap_jitter.py           # common-gap jitter penalty table
+cd validation && python overlap_modes_figure_im.py && python endmatter_checks.py   # Fig. S1, End Matter numbers
 ```
 or simply `bash run_all.sh` (fast items only; add `--slow` for the full-wave, FDFD, finite-tile and FDTD runs).
 
@@ -65,12 +76,14 @@ To compile the paper: `cd paper && pdflatex main && bibtex main && pdflatex main
 
 | Paper element | Script | Data |
 |---|---|---|
-| Fig. 3 (axion reach, 1 m² reference; 10 m² faint) | `code/make_reach_tables.py` → `code/figures_reach_1m2.py` | `data/reach_0p25_8_fw.csv`, `data/reach_0p25_8_fw_Rs2.csv`, `data/limits/` |
-| Fig. 4 (dark-photon reach) | `code/figures_reach_1m2.py` | `data/dp_reach.csv` (regenerated by `dark_photon/dp_tools.py`), `data/dp_projections_digitized.csv` |
+| Fig. 3 (axion reach, 1 m² reference; 10 m² faint) | `code/make_reach_tables.py` → `code/fig_madgrid_context.py` | `data/reach_0p25_8_fw.csv`, `data/reach_0p25_8_fw_Rs2.csv`, `data/limits/axionlimits/` |
+| Fig. 4 (dark-photon reach) | `code/fig_madgrid_dp_context.py` (`_proj` version) | `data/dp_reach.csv` (regenerated by `dark_photon/dp_tools.py`), `data/limits/dp_projections_digitized.csv`, `data/limits/axionlimits/dp/` |
+| Abstract / Sensitivity: crossings (heterodyne 1.0 meV; KIDs 1.6 and 1.9 meV; counters DFSZ-I 0.8–1.2, KSVZ 0.8–3.9 meV), Eq. (5) 1.30×10⁻¹³ GeV⁻¹, χ down to 3×10⁻¹⁶ | the Fig. 3/4 curves (see "Benchmark scaling" below) | as above |
 | Fig. 2(a) optimal number of grids | `code/nsweep_fig2_fig4.py`, `code/figures_tuning.py` | `data/nsweep.csv` |
 | Fig. 2(b) tuning paths | `code/figures_tuning.py` | `data/fig2b_tuning_paths.csv` |
 | Table I (cartridge designs) | `code/reproduce_final.py` (writes `design_check.csv`) | |
 | Fig. 1 concept (`paper/fig1.pdf`) | drawn interactively; no generating script | |
+| Introduction: Q_u ≈ 510 (m_a/meV)^(−2/3), l_amp = 6.3 / 0.4 mm | `code/validation/endmatter_checks.py` | printed |
 | S1: sheet vs wire, 0.4–4.7 % shift, sqrt(I_wire/I_sheet) = 0.92–1.05 | `code/fw_reconcile.py`, `code/fw_reconcile_4_8.py` | `data/fullwave_reconciliation*.csv` |
 | S1: independent FDFD agreement | `code/validation/run_fdfd_crosscheck.py` (~15 min) | `data/fdfd_crosscheck.csv` |
 | S1: dark-photon source outside the stack | `code/dark_photon/dp_tools.py` | `data/dp_reach.csv` |
@@ -78,15 +91,25 @@ To compile the paper: `cd paper && pdflatex main && bibtex main && pdflatex main
 | S2: finite wire length and frame termination (3D) | `code/validation/fdtd3d/` | `data/fdtd3d/` |
 | S2: flanged-enclosure collection 0.72–0.78 | `code/finite_collection/` | `code/finite_collection/results/` |
 | S2: halo factor ξ | `reproduce_final.chi_their` (see docs §8) | |
-| S3 / Fig. S1: overlap with the receiving mode | `code/validation/overlap_modes_figure.py` | `results/fig_overlap_modes.*` |
+| S3 / Fig. S1: overlap with the receiving mode | `code/validation/overlap_receiving_mode.py`, `overlap_modes_figure_im.py` | `paper/fig_overlap_modes.png` |
 | Table II (gap stability, rms grid error) | `code/flatness_mc.py` | `data/flatness_tolerance.csv` |
-| Gap-jitter penalty (0.3–13 %) | `code/validation/gap_jitter.py` | printed |
+| Gap-jitter penalty (supporting; not in the current Letter) | `code/validation/gap_jitter.py` | printed |
 | End Matter B: SQWARE comparison | `code/sqware_check.py`, `code/sqware_poisson_check.py` | `data/sqware_results.csv`, `data/sqware_headtohead.csv` |
-| End Matter B: port-coupled comparator | `code/comparator/` | `data/comparator_results.csv`, `data/final_comparison_equal_volume.csv` |
+| End Matter B: per-element boost (2.5 per sapphire disk, 2.6 / 1.4 per grid), BREAD comparison (2.6–6) | `code/validation/endmatter_checks.py`, `code/dark_photon/dp_tools.py` | printed |
+| Port-coupled comparator (supporting; not in the current Letter) | `code/comparator/` | `data/comparator_results.csv`, `data/final_comparison_equal_volume.csv` |
 | Detector scenarios | `code/reproduce_final.py` | `data/detector_scenarios.csv` |
 
+### Benchmark scaling of the stored reach tables
+`data/reach_0p25_8_fw*.csv` and `data/dp_reach.csv` are computed for a 10 m² array (columns `lin10`, `kid10`, `target`;
+`het`, `kid`, `cnt`), with counters at 4 mHz per 10 cm tile below 4 meV and 1 mHz per 5 cm tile above. The Letter's
+1 m² curves follow from the exact scalings g, χ ∝ (N_tile T)^(−1/4) and ∝ (D/η_d²)^(1/4) (thermal term negligible):
+all curves × 10^(1/4), and counters below 4 meV additionally × (1/4)^(1/4) for D = 1 mHz per channel. `fig_madgrid*.py`
+apply these factors (`F` and `cfac()` in `fig_madgrid.py`); the faint 10 m² curves are the same tables with the counter
+factor only.
+
 ### Reproduction status
-- **Figures:** Figs. 2–4 and the slab figure regenerate pixel-identically from the CSVs in `data/`.
+- **Figures:** Figs. 3, 4 and S1 regenerate pixel-identically to the files included in the Letter; Fig. 2 regenerates
+  pixel-identically to `paper/fig2.*` from `data/nsweep.csv` and `data/fig2b_tuning_paths.csv`.
 - **Reach tables (Fig. 3):** `make_reach_tables.py` rebuilds them from scratch (designs, tuning, sheet response, circular-wire
   correction, halo factor, detectors). It reproduces the stored `data/reach_0p25_8_fw*.csv` to ≤ 0.4 % for counters and KIDs
   at every mass except the single grid point m = 4.000 meV (the cartridge junction), where the stored KID and heterodyne values
@@ -96,7 +119,7 @@ To compile the paper: `cd paper && pdflatex main && bibtex main && pdflatex main
   16–30 % at the three grid points nearest 4 meV.
 - **Dark photon (Fig. 4):** `dark_photon/dp_tools.py` reproduces `data/dp_reach.csv` to 3e-5 from the axion tables.
 - **Halo factor:** all forecasts use `chi_their()`: Gaussian mode truncated at the tile, mean wind in the tile plane
-  (docs §8). Earlier SM text described an untruncated Gaussian with the wind normal to the tile; the two give 0.76 vs 0.78 at 4 meV.
+  (docs §8), as described in SM S2.
 - **Not distributed:** the primary PDFs used by `dark_photon/build_dp_tables.py` for digitization (outputs are in `data/`).
 
 ## 3D FDTD check of finite wire length (`code/validation/fdtd3d/`)

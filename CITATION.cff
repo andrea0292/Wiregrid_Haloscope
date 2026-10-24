@@ -1,6 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this code, please cite the accompanying Letter."
-title: "A Radiative Wire-Grid Plasma Haloscope for Millielectronvolt Axion and Dark-Photon Dark Matter: code and data"
+title: "MADGRID: Layered Wire-Grid Haloscope for Millielectronvolt Axions and Dark Photons, code and data"
 authors:
   - family-names: Caputo
     given-names: Andrea
+repository-code: "https://github.com/andrea0292/Wiregrid_Haloscope"
