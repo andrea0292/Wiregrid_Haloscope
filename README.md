@@ -6,7 +6,7 @@ grids, with wires parallel to B0. Each stack acts as an epsilon-near-zero slab t
 external optics. Five octave cartridges cover 0.25–8 meV. The reference array is 1 m² at 10 T, with a 0.1 K converter
 and one live year per octave.
 
-Everything here runs on a laptop. The heaviest calculations are the optional finite-tile solver (~45 min, 4 GB) and the 3D
+Everything here runs on a laptop. The heaviest calculations are the finite-tile solver (~45 min, 4 GB) and the 3D
 FDTD check (~35 min per cartridge on 10 cores).
 
 ## Layout
