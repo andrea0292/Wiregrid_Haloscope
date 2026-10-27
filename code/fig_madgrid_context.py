@@ -59,10 +59,10 @@ def fig_axion_context(proj=False):
             ax.text(*xy, lab, color='0.3', fontsize=10, rotation=rot, zorder=5, **({'ha': 'right', 'va': 'center'} if lab == 'BREAD' else {}))
     # MADGRID
     hm = m <= 4.0001
-    for y, c, kk in [(A.lin10.values, C_HET, hm), (A.kid10.values, C_KID, None), (k * A.target.values, C_CNT, None)]:
+    for y, c, kk in [(A.lin10.values, C_HET, hm), (KIDF * A.kid10.values, C_KID, None), (k * A.target.values, C_CNT, None)]:
         faint(ax, m, y, c, kk)
     curve(ax, m, F * A.lin10.values, F * B.lin10.values, C_HET, mask=hm)
-    curve(ax, m, F * A.kid10.values, F * B.kid10.values, C_KID)
+    curve(ax, m, F * KIDF * A.kid10.values, F * KIDF * B.kid10.values, C_KID)
     curve(ax, m, F * k * A.target.values, F * k * B.target.values, C_CNT, dashed_below=0.8)
     # labels
     ax.text(0.0125, 1.5e-9, "CAST", color='0.35', fontsize=17)
@@ -73,7 +73,7 @@ def fig_axion_context(proj=False):
     on_curve(ax, mm, 0.75 * q, 9.0, "DFSZ", '#8a6d0b', fac=0.42, size=11)
     on_curve(ax, mm, 1.92 * q, 0.028, "QCD axion", '#a8860f', fac=1.9, size=14)
     on_curve(ax, m[hm], F * A.lin10.values[hm], 0.62, "heterodyne", C_HET, fac=2.5, size=12.5)
-    on_curve(ax, m, F * A.kid10.values, 4.6, "KIDs", C_KID, fac=1.45, size=12.5)
+    on_curve(ax, m, F * KIDF * A.kid10.values, 4.6, "KIDs", C_KID, fac=1.45, size=12.5)
     ax.text(0.975, 0.340, "photon counters", color=C_CNT, fontsize=12.5, ha='right', va='top', transform=ax.transAxes)
     block2(ax, 0.975, 0.255, [r"$A=1\,{\rm m^2}$, $B_0=10\,{\rm T}$", r"1 live yr/octave, SNR$\,=5$",
                             r"counters: $\eta_d=0.5$, $D=1\,{\rm mHz}$"], ha='right')

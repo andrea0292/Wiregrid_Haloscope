@@ -19,6 +19,8 @@ def block(ax, x, y, lines, ha='left', name_size=17, size=11):
         ax.text(x, y - 0.085 - 0.062*i, l, transform=ax.transAxes, fontsize=size, color=NAME_C, ha=ha, va='top')
 from figures_reach import (style, lim, top_axis, xaxis, curve, D, L, OUT, C_HET, C_KID, C_CNT, GRAY)
 F = 10 ** 0.25
+KID_NEP = 6e-19                      # W/sqrt(Hz) per channel; the stored tables use 3e-19
+KIDF = (KID_NEP / 3e-19) ** 0.5       # g, chi scale as NEP^(1/2) (KIDs enter as a dark rate NEP^2/2(h nu)^2)
 def cfac(m): return np.where(m >= 4 - 1e-9, 1.0, 0.25**0.25)
 def faint(ax, m, y, c, mask=None):
     if mask is None: mask = np.isfinite(y)
@@ -38,10 +40,10 @@ def fig_axion():
     mn, gn = lim("NuSTAR_Sun.txt"); s = (mn > 2.4e-4) & (mn < 8e-3); ax.plot(mn[s] * 1e3, gn[s], color='0.25', ls=':', lw=2.2)
     q = 2.04e-13 * mm; ax.fill_between(mm, 0.75 * q, 1.92 * q, color='#e9cf6a', alpha=0.75, lw=0)
     hm = m <= 4.0001
-    for y, c, kk in [(A.lin10.values, C_HET, hm), (A.kid10.values, C_KID, None), (k * A.target.values, C_CNT, None)]:
+    for y, c, kk in [(A.lin10.values, C_HET, hm), (KIDF * A.kid10.values, C_KID, None), (k * A.target.values, C_CNT, None)]:
         faint(ax, m, y, c, kk)
     curve(ax, m, F * A.lin10.values, F * B.lin10.values, C_HET, mask=hm)
-    curve(ax, m, F * A.kid10.values, F * B.kid10.values, C_KID)
+    curve(ax, m, F * KIDF * A.kid10.values, F * KIDF * B.kid10.values, C_KID)
     curve(ax, m, F * k * A.target.values, F * k * B.target.values, C_CNT, dashed_below=0.8)
     kw = dict(fontsize=15)
     ax.text(0.27, 2.0e-10, "CAST", color='0.3', fontsize=16)
@@ -72,12 +74,12 @@ def fig_dp():
         s = pj[(pj.experiment == "SQWARE (Mehrani et al.)") & (pj.scenario_phase == cfg)].sort_values("mass_eV")
         ax.plot(s.mass_eV * 1e3, s.chi, color='0.35', ls=':', lw=2.0); ax.text(*xy, lab, color='0.35', fontsize=11)
     hm = np.isfinite(P.het.values)
-    for y, c, kk in [(P.het.values, C_HET, hm), (P.kid.values, C_KID, None), (k * P.cnt.values, C_CNT, None)]:
+    for y, c, kk in [(P.het.values, C_HET, hm), (KIDF * P.kid.values, C_KID, None), (k * P.cnt.values, C_CNT, None)]:
         faint(ax, m, y, c, kk)
     curve(ax, m, F * P.het.values, F * P.het_Rs2.values, C_HET, mask=hm)
-    curve(ax, m, F * P.kid.values, F * P.kid_Rs2.values, C_KID)
+    curve(ax, m, F * KIDF * P.kid.values, F * KIDF * P.kid_Rs2.values, C_KID)
     curve(ax, m, F * k * P.cnt.values, F * k * P.cnt_Rs2.values, C_CNT, dashed_below=0.8)
-    ax.plot(m, P.proto_kid.values, color=C_KID, lw=1.8, ls='-.')
+    ax.plot(m, KIDF * P.proto_kid.values, color=C_KID, lw=1.8, ls='-.')
     ax.text(0.52, 1.95e-13, "heterodyne", color=C_HET, fontsize=13)
     ax.text(4.15, 3.1e-13, "KID arrays", color=C_KID, fontsize=12)
     ax.text(0.3, 7.5e-13, "one tile, KID", color=C_KID, fontsize=12)

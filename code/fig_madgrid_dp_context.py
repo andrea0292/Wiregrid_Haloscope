@@ -62,17 +62,17 @@ def fig_dp_context(proj=False):
         ax.plot(s.mass_eV * 1e3, s.chi, color=C_PROJ, lw=1.4, ls=':', zorder=1.5); ax.text(0.42, 1.6e-15, "SQWARE", color='0.3', fontsize=10, zorder=5)
     # MADGRID
     hm = np.isfinite(P.het.values)
-    for y, c, kk in [(P.het.values, C_HET, hm), (P.kid.values, C_KID, None), (k * P.cnt.values, C_CNT, None)]:
+    for y, c, kk in [(P.het.values, C_HET, hm), (KIDF * P.kid.values, C_KID, None), (k * P.cnt.values, C_CNT, None)]:
         faint(ax, m, y, c, kk)
     curve(ax, m, F * P.het.values, F * P.het_Rs2.values, C_HET, mask=hm)
-    curve(ax, m, F * P.kid.values, F * P.kid_Rs2.values, C_KID)
+    curve(ax, m, F * KIDF * P.kid.values, F * KIDF * P.kid_Rs2.values, C_KID)
     curve(ax, m, F * k * P.cnt.values, F * k * P.cnt_Rs2.values, C_CNT, dashed_below=0.8)
     # labels
     ax.text(18., 4.3e-10, "XENON1T", color='0.35', fontsize=13, ha='right')
     ax.text(0.13, 5.5e-10, "cosmology", color='0.25', fontsize=10, ha='left', va='center', zorder=6)
     ax.text(0.0365, 1.1e-13, "DM searches", color='0.3', fontsize=11, rotation=90, va='bottom', zorder=6)
     on_curve(ax, m[hm], F * P.het.values[hm], 0.62, "heterodyne", C_HET, fac=2.2, size=12.5)
-    on_curve(ax, m, F * P.kid.values, 4.6, "KIDs", C_KID, fac=1.5, size=12.5)
+    on_curve(ax, m, F * KIDF * P.kid.values, 4.6, "KIDs", C_KID, fac=1.5, size=12.5)
     ax.text(0.975, 0.122, "photon counters", color=C_CNT, fontsize=12.5, ha='right', va='bottom', transform=ax.transAxes)
     block_dp(ax, 0.025, 0.218, [r"$A=1\,{\rm m^2}$, no magnet", r"1 live yr/octave, SNR$\,=5$",
                               r"counters: $\eta_d=0.5$, $D=1\,{\rm mHz}$"], ha='left')

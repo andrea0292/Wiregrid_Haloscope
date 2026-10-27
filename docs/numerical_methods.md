@@ -36,7 +36,8 @@ geometric band centre. Tuning is done by changing d at fixed a, r, N, along a tr
 **Reach.** Results are given at SNR = 5 (local), with the dwell time from a log-uniform scan over each octave and one live year per octave.
 - Heterodyne: noise 10 hν, bandwidth 10⁻⁶ ν.
 - Counters and KIDs: dark rate D per tile plus the thermal rate of the converter at T. A KID enters as a counter with
-  D = NEP²/2(hν)².
+  D = NEP²/2(hν)². The stored tables use NEP = 3×10⁻¹⁹ W/√Hz; the Letter's 6×10⁻¹⁹ W/√Hz (white amplitude readout)
+  follows exactly by g, χ ∝ NEP^{1/2}, applied in the figure scripts (`KIDF`).
 - Single-tile signal power: P1 = 7.33×10⁻²⁶ W × ½ η_ap ξ (A_tile/m²)(meV/m_a)², with η_ap = 0.65 and ξ the halo overlap of
   S2 (Gaussian mode, w = W/2).
 

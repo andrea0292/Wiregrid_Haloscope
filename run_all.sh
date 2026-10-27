@@ -10,6 +10,7 @@ python make_reach_tables.py --compare   # data/reach_0p25_8_fw*_repro.csv vs sto
 python fig_madgrid_context.py         # Fig. 3: paper/fig_axion_1m2_context*
 python fig_madgrid_dp_context.py      # Fig. 4: paper/fig_dp_1m2_context*
 python fig_madgrid.py                 # 0.25-8 meV variants: paper/fig_axion_1m2.*, paper/fig_dp_1m2.*
+python quoted_numbers.py              # reach numbers quoted in the Letter
 python figures_tuning.py             # paper/fig2.*
 python figures_slab.py               # paper/fig5.*
 (cd dark_photon && python dp_tools.py)   # data/dp_reach_check.csv
