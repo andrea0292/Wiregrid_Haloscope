@@ -58,7 +58,7 @@ def fig_axion_context(proj=False):
             mx, gx = lower_edge(np.loadtxt(os.path.join(AL, 'proj', f))); ax.plot(mx, gx, color='0.35', lw=1.2, ls=(0, (4, 2)), zorder=1.5)
             ax.text(*xy, lab, color='0.3', fontsize=10, rotation=rot, zorder=5, **({'ha': 'right', 'va': 'center'} if lab == 'BREAD' else {}))
     # MADGRID
-    hm = m <= 4.0001
+    hm = m < 4 - 1e-9          # heterodyne: 2-4 meV cartridge and below (the m = 4.000 row belongs to 4-8 meV)
     for y, c, kk in [(A.lin10.values, C_HET, hm), (KIDF * A.kid10.values, C_KID, None), (k * A.target.values, C_CNT, None)]:
         faint(ax, m, y, c, kk)
     curve(ax, m, F * A.lin10.values, F * B.lin10.values, C_HET, mask=hm)

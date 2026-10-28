@@ -9,7 +9,7 @@ from fig_madgrid import F, cfac, KIDF, KID_NEP, D, L
 A = pd.read_csv(os.path.join(D, "reach_0p25_8_fw.csv")); P = pd.read_csv(os.path.join(D, "dp_reach.csv"))
 m = A.m.values; het = F * A.lin10.values; kid = F * KIDF * A.kid10.values; cnt = F * cfac(m) * A.target.values
 c = np.loadtxt(os.path.join(L, "CAST.txt")); gcast = np.interp(m * 1e-3, c[:, 0], c[:, 1]); ggc = 4.7e-11
-hm = m <= 4.0001
+hm = m < 4 - 1e-9          # heterodyne: 2-4 meV cartridge and below (the m = 4.000 row belongs to 4-8 meV)
 def upto(y, ref, mask=True): return m[(y < ref) & mask].max()
 ks, df = 2.04e-13 * 1.92 * m, 2.04e-13 * 0.75 * m
 print(f"KID NEP = {KID_NEP:.1e} W/sqrt(Hz) per channel")

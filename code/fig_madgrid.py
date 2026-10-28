@@ -39,7 +39,7 @@ def fig_axion():
     ax.axhline(4.7e-11, color='0.3', ls='--', lw=1.8)
     mn, gn = lim("NuSTAR_Sun.txt"); s = (mn > 2.4e-4) & (mn < 8e-3); ax.plot(mn[s] * 1e3, gn[s], color='0.25', ls=':', lw=2.2)
     q = 2.04e-13 * mm; ax.fill_between(mm, 0.75 * q, 1.92 * q, color='#e9cf6a', alpha=0.75, lw=0)
-    hm = m <= 4.0001
+    hm = m < 4 - 1e-9          # heterodyne: 2-4 meV cartridge and below (the m = 4.000 row belongs to 4-8 meV)
     for y, c, kk in [(A.lin10.values, C_HET, hm), (KIDF * A.kid10.values, C_KID, None), (k * A.target.values, C_CNT, None)]:
         faint(ax, m, y, c, kk)
     curve(ax, m, F * A.lin10.values, F * B.lin10.values, C_HET, mask=hm)
@@ -73,7 +73,7 @@ def fig_dp():
                          ("Config. 3 (LM-S), 300-d sweep, t_obs=7 min/step", "SQWARE 3", (2.1, 2.2e-15))]:
         s = pj[(pj.experiment == "SQWARE (Mehrani et al.)") & (pj.scenario_phase == cfg)].sort_values("mass_eV")
         ax.plot(s.mass_eV * 1e3, s.chi, color='0.35', ls=':', lw=2.0); ax.text(*xy, lab, color='0.35', fontsize=11)
-    hm = np.isfinite(P.het.values)
+    hm = np.isfinite(P.het.values) & (m < 4 - 1e-9)
     for y, c, kk in [(P.het.values, C_HET, hm), (KIDF * P.kid.values, C_KID, None), (k * P.cnt.values, C_CNT, None)]:
         faint(ax, m, y, c, kk)
     curve(ax, m, F * P.het.values, F * P.het_Rs2.values, C_HET, mask=hm)

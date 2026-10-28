@@ -13,7 +13,7 @@ is confined to 0 < x < L. Each grid is a sheet of complex impedance per square
 
     Z_g = R_g − i ω L_s ,  L_s = (μ0 a / 2π) ln(a / 2π r) ,  R_g = R_s a / (2π r)
 
-with pitch a, wire radius r, and copper surface resistance R_s = 83.6 mΩ (ν/250 GHz)^(2/3) (anomalous skin effect, RRR-limited).
+with pitch a, wire radius r, and copper surface resistance R_s = 83.6 mΩ (ν/250 GHz)^(2/3) (extreme anomalous skin effect, independent of the dc resistivity).
 
 **Field equations.** In each gap the total field is E = E_p + A_j e^{ikx} + B_j e^{−ikx}, where the particular solution E_p = −E0
 is present only inside the driven region. At the mirror E(0) = 0. At each grid E is continuous, and the derivative jumps because of the
@@ -159,6 +159,6 @@ narrows the aperture.
 ## 9. Overlap form of the boost (`code/validation/overlap_receiving_mode.py`, `overlap_modes_figure_im.py`)
 
 By reciprocity, β = (ik/2) ∫₀ᴸ E_rec(s) ds, where E_rec is the field set up by a unit plane wave incident from the detector side
-(SM S3). The script checks this against the direct solver (agreement 2×10⁻⁶ for all five cartridges) and draws the receiving
+(SM S3). The script checks this against the direct solver (agreement 2×10⁻⁶ for the 1–2 meV cartridge) and draws the receiving
 mode for the stack modes m = 1, 2, 3 (KL ≈ mπ): only m = 1 adds coherently; even m are dark. `overlap_modes_figure_im.py`
 draws Fig. S1 of the Letter, with the imaginary parts (for m = 1, max|Im|/max|Re| = 0.12 and |∫E_rec|/∫|E_rec| = 0.99).

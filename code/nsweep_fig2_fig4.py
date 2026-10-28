@@ -21,7 +21,7 @@ if __name__=="__main__":
     bands=[((0.25,0.5),None),((0.5,1),None),((1,2),None),((2,4),None),((4,8),2.5e-6)]
     rows=[]
     for (lo,hi),rfix in bands:
-        for N in [3,4,5,6,7,8,9,10,11,12,13,14,15,16,18,20,23,26]:
+        for N in [3,4,5,6,7,8,9,10,11,12,13,14,15,16,18,20,23,26,30]:
             a,r_,f0,pk,Q,I=design_band_r(np.sqrt(lo*hi),N,rfix); Qrad=Qwidth(a,r_,a,N,f0,1e-4)
             rows.append(dict(band=f"{lo}-{hi}",N=N,a_um=a*1e6,L_mm=N*a*1e3,beta2=pk,Q_r=Q,I=I,Q_rad=Qrad))
     NS=pd.DataFrame(rows); NS['Q_abs']=1/(1/NS.Q_r-1/NS.Q_rad); NS['x']=NS.Q_abs/NS.Q_rad; NS.to_csv('nsweep.csv',index=False)

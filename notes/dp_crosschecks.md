@@ -31,3 +31,7 @@ Each entry: quantity — method 1 — method 2 — agreement.
     SQWARE cfg 3 Poisson (Asimov, Lorentzian response, 0.062 background counts per FWHM): threshold chi x1.27 -> ratio 1.78 (technical review: 2.26 with full response); quoted 1.8-2.3.
     One-tile KID curve: chi_kid(array) x (N_tile x 12)^(1/4), N_tile = 1000 (10 cm) below 4 meV, 4000 (5 cm) above -- v13 used 1000 above 4 meV (curve 1.41x too low there); fixed in v14.
 13. v14 review: SQWARE axion ratio direction verified in sqware_headtohead.csv (g_ratio_corrected = g_SQ/g_ours: 4.20, 0.95; half collection 5.94, 1.34). Poisson diagnostic script sqware_poisson_check.py: 1.78 (Lorentzian); review's integrated-response value 2.26.
+
+
+Correction (2026-10): sqware_poisson_check.py used chi ∝ s0^(1/4); since s0 ∝ chi^2 the correct scaling is s0^(1/2),
+which gives a threshold factor 1.613 and ratio 2.26 (not 1.27 and 1.78). This diagnostic is not used in the current Letter.

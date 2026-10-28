@@ -61,7 +61,7 @@ def fig_dp_context(proj=False):
         s = pj[(pj.experiment == "SQWARE (Mehrani et al.)") & (pj.scenario_phase == "Config. 3 (LM-S), 300-d sweep, t_obs=7 min/step")].sort_values("mass_eV")
         ax.plot(s.mass_eV * 1e3, s.chi, color=C_PROJ, lw=1.4, ls=':', zorder=1.5); ax.text(0.42, 1.6e-15, "SQWARE", color='0.3', fontsize=10, zorder=5)
     # MADGRID
-    hm = np.isfinite(P.het.values)
+    hm = np.isfinite(P.het.values) & (m < 4 - 1e-9)
     for y, c, kk in [(P.het.values, C_HET, hm), (KIDF * P.kid.values, C_KID, None), (k * P.cnt.values, C_CNT, None)]:
         faint(ax, m, y, c, kk)
     curve(ax, m, F * P.het.values, F * P.het_Rs2.values, C_HET, mask=hm)
