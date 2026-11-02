@@ -89,7 +89,7 @@ def fig_axion():
     ax.fill_between(mm, 0.75 * q, 1.92 * q, color='#e9cf6a', alpha=0.75, lw=0)
     curve(ax, m, A.lin10.values, B.lin10.values, C_HET, mask=m <= 4.0001)
     curve(ax, m, A.kid10.values, B.kid10.values, C_KID)
-    curve(ax, m, A.target.values, B.target.values, C_CNT, dashed_below=0.8)
+    curve(ax, m, A.target.values, B.target.values, C_CNT)
     # same counters (50%, 4 mHz per channel), 1 m^2, same exposure: g scales as A^(-1/4)
     f1 = 10 ** 0.25
     g1, g1b = A.target.values * f1, B.target.values * f1
@@ -130,7 +130,7 @@ def fig_dp():
         ax.text(*xy, lab, color='0.35', fontsize=11)
     curve(ax, m, P.het.values, P.het_Rs2.values, C_HET, mask=np.isfinite(P.het.values))
     curve(ax, m, P.kid.values, P.kid_Rs2.values, C_KID)
-    curve(ax, m, P.cnt.values, P.cnt_Rs2.values, C_CNT, dashed_below=0.8)
+    curve(ax, m, P.cnt.values, P.cnt_Rs2.values, C_CNT)
     ax.plot(m, P.proto_kid.values, color=C_KID, lw=1.8, ls='-.')
     kw = dict(fontsize=15)
     ax.text(0.6, 1.65e-13, "heterodyne", color=C_HET, fontsize=14)

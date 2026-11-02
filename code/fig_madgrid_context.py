@@ -63,7 +63,7 @@ def fig_axion_context(proj=False):
         faint(ax, m, y, c, kk)
     curve(ax, m, F * A.lin10.values, F * B.lin10.values, C_HET, mask=hm)
     curve(ax, m, F * KIDF * A.kid10.values, F * KIDF * B.kid10.values, C_KID)
-    curve(ax, m, F * k * A.target.values, F * k * B.target.values, C_CNT, dashed_below=0.8)
+    curve(ax, m, F * k * A.target.values, F * k * B.target.values, C_CNT)
     # labels
     ax.text(0.0125, 1.5e-9, "CAST", color='0.35', fontsize=17)
     ax.text(0.08, 5.1e-11, "globular clusters", color="0.25", fontsize=10, ha='left', va='bottom', zorder=6)

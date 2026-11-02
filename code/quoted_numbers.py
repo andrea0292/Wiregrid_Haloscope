@@ -15,8 +15,9 @@ ks, df = 2.04e-13 * 1.92 * m, 2.04e-13 * 0.75 * m
 print(f"KID NEP = {KID_NEP:.1e} W/sqrt(Hz) per channel")
 print(f"heterodyne below GC / CAST up to {upto(het, ggc, hm):.2f} / {upto(het, gcast, hm):.2f} meV")
 print(f"KIDs       below GC / CAST up to {upto(kid, ggc):.2f} / {upto(kid, gcast):.2f} meV")
-print(f"counters below DFSZ-I up to {m[cnt < df].max():.2f} meV, below KSVZ up to {m[cnt < ks].max():.2f} meV")
+print(f"counters below DFSZ-I over {m[cnt < df].min():.2f}-{m[cnt < df].max():.2f} meV, below KSVZ over {m[cnt < ks].min():.2f}-{m[cnt < ks].max():.2f} meV")
+print(f"counters / DFSZ-I and / KSVZ at {m[0]:.2f} meV: {cnt[0]/df[0]:.2f}, {cnt[0]/ks[0]:.2f}")
 print(f"Eq. (5): counter reach at 1 meV = {np.interp(1.0, m, cnt):.3e} GeV^-1")
 mp = P.m_meV.values; cntp = F * cfac(mp) * P.cnt.values; kidp = F * KIDF * P.kid.values
-print(f"dark photons: counters min chi above 0.8 meV = {cntp[mp >= 0.8].min():.2e}; KIDs at 1 meV = {np.interp(1.0, mp, kidp):.2e}"
+print(f"dark photons: counters min chi = {cntp.min():.2e} at {mp[np.argmin(cntp)]:.2f} meV (at 1 meV {np.interp(1.0, mp, cntp):.2e}); KIDs at 1 meV = {np.interp(1.0, mp, kidp):.2e}"
       f" ({np.interp(1.0, mp, kidp)/3e-14:.1f} x BREAD's 3e-14)")

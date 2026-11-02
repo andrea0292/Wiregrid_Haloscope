@@ -66,7 +66,7 @@ def fig_dp_context(proj=False):
         faint(ax, m, y, c, kk)
     curve(ax, m, F * P.het.values, F * P.het_Rs2.values, C_HET, mask=hm)
     curve(ax, m, F * KIDF * P.kid.values, F * KIDF * P.kid_Rs2.values, C_KID)
-    curve(ax, m, F * k * P.cnt.values, F * k * P.cnt_Rs2.values, C_CNT, dashed_below=0.8)
+    curve(ax, m, F * k * P.cnt.values, F * k * P.cnt_Rs2.values, C_CNT)
     # labels
     ax.text(18., 4.3e-10, "XENON1T", color='0.35', fontsize=13, ha='right')
     ax.text(0.13, 5.5e-10, "cosmology", color='0.25', fontsize=10, ha='left', va='center', zorder=6)
